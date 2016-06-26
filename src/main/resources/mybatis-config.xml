@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+       <!-- 命名空间 -->
+       <typeAliases>
+           <typeAlias alias="Servant" type="com.test.model.Servant"/>
+           <typeAlias alias="ParkingSpace" type="com.test.model.ParkingSpace"/>
+           <typeAlias alias="Reserve" type="com.test.model.Reserve"/>
+           <typeAlias alias="PersonInfo" type="com.test.model.PersonInfo"/>
+       </typeAliases>
+
+</configuration>
