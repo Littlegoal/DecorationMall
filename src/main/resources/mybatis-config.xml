@@ -5,10 +5,7 @@
 <configuration>
        <!-- 命名空间 -->
        <typeAliases>
-           <typeAlias alias="Servant" type="com.test.model.Servant"/>
-           <typeAlias alias="ParkingSpace" type="com.test.model.ParkingSpace"/>
-           <typeAlias alias="Reserve" type="com.test.model.Reserve"/>
-           <typeAlias alias="PersonInfo" type="com.test.model.PersonInfo"/>
+           <typeAlias alias="Shop" type="com.pdwy.model.Shop"/>
        </typeAliases>
 
 </configuration>
