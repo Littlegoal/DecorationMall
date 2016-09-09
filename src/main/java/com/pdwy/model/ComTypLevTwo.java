@@ -5,6 +5,7 @@ import java.io.Serializable;
 /**
  * 商品二级分类表
  * Created by MaYunpeng on 2016/9/1.
+ * @author
  */
 public class ComTypLevTwo implements Serializable{
     /**
