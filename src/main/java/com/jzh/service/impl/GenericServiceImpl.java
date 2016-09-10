@@ -1,7 +1,7 @@
-package com.pdwy.service.impl;
+package com.jzh.service.impl;
 
-import com.pdwy.service.GenericService;
-import com.pdwy.dao.GenericDao;
+import com.jzh.service.GenericService;
+import com.jzh.dao.GenericDao;
 
 import java.io.Serializable;
 import java.util.List;

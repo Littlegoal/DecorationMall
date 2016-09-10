@@ -1,6 +1,6 @@
-package com.pdwy.dao;
+package com.jzh.dao;
 
-import com.pdwy.model.CommodityHomepageRecommend;
+import com.jzh.model.CommodityHomepageRecommend;
 
 import java.util.List;
 

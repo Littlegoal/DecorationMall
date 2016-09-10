@@ -1,22 +1,21 @@
-package com.pdwy.model;
+package com.jzh.model;
 
 import java.io.Serializable;
 
 /**
- * 商家客户表
+ * 用户实体
  *
  * @author Junhao Zhou
  * @version 1.0
  */
-public class Client implements Serializable {
-
+public class Customer implements Serializable {
     /**
      *
      */
     private static final long serialVersionUID = 1L;
 
     /**
-     * 客户id
+     * 用户id
      */
     private Long id;
 
@@ -64,19 +63,19 @@ public class Client implements Serializable {
         this.password = password;
     }
 
-    public String getLatestUpdateTime() {
-        return latestUpdateTime;
-    }
-
-    public void setLatestUpdateTime(String latestUpdateTime) {
-        this.latestUpdateTime = latestUpdateTime;
-    }
-
     public int getIsDelete() {
         return isDelete;
     }
 
     public void setIsDelete(int isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public String getLatestUpdateTime() {
+        return latestUpdateTime;
+    }
+
+    public void setLatestUpdateTime(String latestUpdateTime) {
+        this.latestUpdateTime = latestUpdateTime;
     }
 }

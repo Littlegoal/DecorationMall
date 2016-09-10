@@ -1,6 +1,4 @@
-package com.pdwy.dao;
-
-import org.apache.ibatis.annotations.Param;
+package com.jzh.dao;
 
 import java.io.Serializable;
 import java.util.List;
