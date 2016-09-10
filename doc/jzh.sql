@@ -173,12 +173,13 @@ CREATE TABLE `commodity_homepage_recommend` (
 -- ----------------------------
 DROP TABLE IF EXISTS `commodity_attribute`;
 CREATE TABLE `commodity_attribute` (
+  `id` bigint(20) unsigned NOT NULL COMMENT '主键id',
   `commodity_id` bigint(20) unsigned NOT NULL COMMENT '商品id',
   `commodity_attribute_id` bigint(20) unsigned NOT NULL COMMENT '商品属性id',
   `commodity_attribute_value` varchar(50) NOT NULL COMMENT '商品属性值',
   `is_deleted` int(1) NOT NULL COMMENT '删除标记位，未删除为1，已删除为0',
   `update_time` datetime NOT NULL COMMENT '最后更新时间',
-  PRIMARY KEY (`commodity_id`,`commodity_attribute_id`),
+  PRIMARY KEY (`id`),
   KEY `commodity_attribute_id_1` (`commodity_attribute_id`),
   CONSTRAINT `commodity_attribute_id_1` FOREIGN KEY (`commodity_attribute_id`) REFERENCES `commodity_attribute_type` (`commodity_attribute_type_id`),
   CONSTRAINT `commodity_id_1` FOREIGN KEY (`commodity_id`) REFERENCES `commodity` (`commodity_id`)
