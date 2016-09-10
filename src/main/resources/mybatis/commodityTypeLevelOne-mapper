@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pdwy.dao.CommodityTypeLevelOneDao">
+
+    <!-- CommodityTypeLevelOne集合申明 -->
+    <resultMap id="commodityTypeLevelOneMap" type="CommodityTypeLevelOne">
+        <id property="typeLevelOneId" column="level_one_id"/>
+        <result property="typeLevelOneName" column="level_one_name"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <!--把需要查询的字段写成公用列-->
+    <sql id="base_column">
+        level_one_id,level_one_name,is_deleted,update_time
+    </sql>
+
+    <!-- 搜素所有未逻辑删除的CommodityTypeLevelOne-->
+    <select id="listAll" resultMap="commodityTypeLevelOneMap">
+        select
+        <include refid="base_column" />
+        from
+        commodity_type_level_one
+    </select>
+
+    <!-- 新增CommodityTypeLevelOne -->
+    <insert id="insert" parameterType="CommodityTypeLevelOne">
+        insert into
+        commodity_type_level_one (level_one_name,is_deleted,update_time)
+        values
+        (
+        #{typeLevelOneName},#{isDeleted},#{updateTime}
+        )
+    </insert>
+
+    <!-- 更新CommodityTypeLevelOne -->
+    <update id="update"  parameterType="CommodityTypeLevelOne">
+        update
+        commodity_type_level_one
+        set
+        level_one_name=#{typeLevelOneName},
+        is_deleted=#{isDeleted},
+        update_time=#{updateTime}
+        where
+        level_one_id=#{typeLevelOneId}
+    </update>
+
+    <!-- 删除CommodityTypeLevelOne -->
+    <delete id="delete">
+        update
+        commodity_type_level_one
+        set
+        is_deleted=0,
+        update_time=#{updateTime}
+        where
+        level_one_id=#{typeLevelOneId}
+    </delete>
+
+    <!-- 查询CommodityTypeLevelOne -->
+    <select id="get" parameterType="Long" resultMap="commodityTypeLevelOneMap">
+        select
+        <include refid="base_column" />
+        from
+        commodity_type_level_one
+        where
+        level_one_id=#{typeLevelOneId}
+    </select>
+
+</mapper>

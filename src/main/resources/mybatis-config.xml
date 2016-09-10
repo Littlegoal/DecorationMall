@@ -6,6 +6,10 @@
        <!-- 命名空间 -->
        <typeAliases>
            <typeAlias alias="Shop" type="com.pdwy.model.Shop"/>
+           <typeAlias alias="CommodityTypeLevelOne" type="com.pdwy.model.CommodityTypeLevelOne"/>
+           <typeAlias alias="CommodityTypeLevelTwo" type="com.pdwy.model.CommodityTypeLevelTwo"/>
+           <typeAlias alias="CommodityTypeLevelThree" type="com.pdwy.model.CommodityTypeLevelThree"/>
+           <typeAlias alias="CommodityHomepageRecommend" type="com.pdwy.model.CommodityHomepageRecommend"/>
        </typeAliases>
 
 </configuration>
