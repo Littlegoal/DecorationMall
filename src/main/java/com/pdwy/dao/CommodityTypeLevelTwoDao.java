@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * @author MaYunpeng
+ * @author Yunpeng Ma
  * @version 1.0
  */
 public interface CommodityTypeLevelTwoDao extends GenericDao<CommodityTypeLevelTwo,Long> {

@@ -7,7 +7,8 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by MaYunpeng on 2016/8/30.
+ * @author Yunpeng Ma
+ * @version 1.0
  */
 public class GenericServiceImpl<T, PK extends Serializable> implements GenericService <T, PK> {
 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 家装首页商品推荐表
- * @author MaYunpeng
+ * @author Yunpeng Ma
  * @version 1.0
  */
 public class CommodityHomepageRecommend implements Serializable {
@@ -13,22 +13,56 @@ public class CommodityHomepageRecommend implements Serializable {
      */
 
     private static final long serialVersionUID = 1L;
-    //家装首页推荐商品项id
+
+    /**
+     * 家装首页推荐商品项id
+     */
     private Long id;
-    //商品二级分类id
+
+    /**
+     * 商品二级分类id
+     */
     private Long typeLevelTwoId;
-    //店铺id
+
+    /**
+     * 店铺id
+     */
     private Long shopId;
-    //店铺名称
+
+    /**
+     * 店铺名称
+     */
     private String shopName;
-    //商品id
+
+    /**
+     * 商品id
+     */
     private Long commodityId;
-    //商品名称
+
+    /**
+     * 商品名称
+     */
     private String  commodityName;
-    //商品价格
+
+    /**
+     * 商品价格
+     */
     private Double commodityPrice;
-    //商品图片
+
+    /**
+     * 商品图片
+     */
     private String commodityImg;
+
+    /**
+     * 删除标记位,未删除为1,已删除为0
+     */
+    private int isDeleted;
+
+    /**
+     * 最后更新时间
+     */
+    private String updateTime;
 
     public Long getId() {
         return id;
@@ -92,5 +126,21 @@ public class CommodityHomepageRecommend implements Serializable {
 
     public void setCommodityImg(String commodityImg) {
         this.commodityImg = commodityImg;
+    }
+
+    public int getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(int isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 }

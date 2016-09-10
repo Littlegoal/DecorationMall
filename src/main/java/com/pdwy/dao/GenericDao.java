@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author MaYunpeng
+ * @author Yunpeng Ma
  * @version 1.0
  */
 public interface GenericDao <T, PK extends Serializable> {

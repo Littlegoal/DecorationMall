@@ -155,6 +155,8 @@ CREATE TABLE `commodity_homepage_recommend` (
   `commodity_name` text COMMENT '商品名称',
   `commodity_price` decimal(10,2) DEFAULT NULL COMMENT '商品价格',
   `commodity_img` text COMMENT '商品图片',
+  `is_deleted` int(1) NOT NULL COMMENT '删除标记位,未删除为1,已删除为0',
+  `update_time` datetime NOT NULL COMMENT '最后更新时间',
   PRIMARY KEY (`id`),
   KEY `shop_id_3` (`shop_id`),
   KEY `commodity_id_3` (`commodity_id`),

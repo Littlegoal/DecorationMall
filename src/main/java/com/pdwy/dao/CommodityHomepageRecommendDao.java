@@ -5,7 +5,7 @@ import com.pdwy.model.CommodityHomepageRecommend;
 import java.util.List;
 
 /**
- * @author MaYunpeng
+ * @author Yunpeng Ma
  * @version 1.0
  */
 public interface CommodityHomepageRecommendDao extends GenericDao<CommodityHomepageRecommend,Long> {
