@@ -1,6 +1,7 @@
 package com.pdwy.dao;
 
 import com.pdwy.model.CommodityTypeLevelTwo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -23,5 +24,5 @@ public interface CommodityTypeLevelTwoDao extends GenericDao<CommodityTypeLevelT
     int update(CommodityTypeLevelTwo entity);
 
     @Override
-    int delete(final Long id, String updateTime);
+    int delete(@Param("typeLevelTwoId")final Long id,@Param("updateTime") String updateTime);
 }
