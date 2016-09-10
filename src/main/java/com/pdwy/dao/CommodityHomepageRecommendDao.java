@@ -23,5 +23,5 @@ public interface CommodityHomepageRecommendDao extends GenericDao<CommodityHomep
     int update(CommodityHomepageRecommend entity);
 
     @Override
-    int delete(CommodityHomepageRecommend entity);
+    int delete(final Long id, String updateTime);
 }

@@ -23,5 +23,5 @@ public interface CommodityTypeLevelThreeDao extends GenericDao<CommodityTypeLeve
     int update(CommodityTypeLevelThree entity);
 
     @Override
-    int delete(CommodityTypeLevelThree entity);
+    int delete(final Long id, String updateTime);
 }

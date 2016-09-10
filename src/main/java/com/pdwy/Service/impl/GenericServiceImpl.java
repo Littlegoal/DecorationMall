@@ -27,7 +27,7 @@ public class GenericServiceImpl<T, PK extends Serializable> implements GenericSe
     }
 
     @Override
-    public T get(Long id) {
+    public T get(PK id) {
         return dao.get(id);
     }
 
@@ -42,7 +42,7 @@ public class GenericServiceImpl<T, PK extends Serializable> implements GenericSe
     }
 
     @Override
-    public int delete(T entity) {
-        return dao.delete(entity);
+    public int delete(PK id, String updateTime) {
+        return dao.delete(id,updateTime);
     }
 }

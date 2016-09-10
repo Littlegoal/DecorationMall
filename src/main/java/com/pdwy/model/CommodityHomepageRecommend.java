@@ -3,7 +3,7 @@ package com.pdwy.model;
 import java.io.Serializable;
 
 /**
- * ¼Ò×°Ê×Ò³ÉÌÆ·ÍÆ¼ö±í
+ * å®¶è£…é¦–é¡µå•†å“æ¨èè¡¨
  * @author MaYunpeng
  * @version 1.0
  */
@@ -13,21 +13,21 @@ public class CommodityHomepageRecommend implements Serializable {
      */
 
     private static final long serialVersionUID = 1L;
-    //¼Ò×°Ê×Ò³ÍÆ¼öÉÌÆ·Ïîid
+    //å®¶è£…é¦–é¡µæ¨èå•†å“é¡¹id
     private Long id;
-    //ÉÌÆ·¶ş¼¶·ÖÀàid
+    //å•†å“äºŒçº§åˆ†ç±»id
     private Long typeLevelTwoId;
-    //µêÆÌid
+    //åº—é“ºid
     private Long shopId;
-    //µêÆÌÃû³Æ
+    //åº—é“ºåç§°
     private String shopName;
-    //ÉÌÆ·id
+    //å•†å“id
     private Long commodityId;
-    //ÉÌÆ·Ãû³Æ
+    //å•†å“åç§°
     private String  commodityName;
-    //ÉÌÆ·¼Û¸ñ
+    //å•†å“ä»·æ ¼
     private Double commodityPrice;
-    //ÉÌÆ·Í¼Æ¬
+    //å•†å“å›¾ç‰‡
     private String commodityImg;
 
     public Long getId() {

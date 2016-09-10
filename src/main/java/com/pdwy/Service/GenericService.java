@@ -9,22 +9,22 @@ import java.util.List;
 public interface GenericService <T, PK extends Serializable> {
 
     /**
-     * ²éÑ¯ËùÓĞ¶ÔÏó
+     * æŸ¥è¯¢æ‰€æœ‰å¯¹è±¡
      *
      * @return
      */
     List<T> listAll();
 
     /**
-     * »ñÈ¡µ¥ÌõÊı¾İ
+     * è·å–å•æ¡æ•°æ®
      *
      * @param id
      * @return
      */
-    T get(final Long id);
+    T get(final PK id);
 
     /**
-     * ²åÈëÊı¾İ
+     * æ’å…¥æ•°æ®
      *
      * @param entity
      * @return
@@ -32,7 +32,7 @@ public interface GenericService <T, PK extends Serializable> {
     int insert(T entity);
 
     /**
-     * ¸üĞÂÊı¾İ
+     * æ›´æ–°æ•°æ®
      *
      * @param entity
      * @return
@@ -40,11 +40,11 @@ public interface GenericService <T, PK extends Serializable> {
     int update(T entity);
 
     /**
-     * É¾³ıÊı¾İ
-     *
-     * @param entity
+     * åˆ é™¤æ•°æ®
+     * @param id
+     * @param updateTime
      * @return
      */
-    int delete(T entity);
+    int delete(final PK id, String updateTime);
 
 }

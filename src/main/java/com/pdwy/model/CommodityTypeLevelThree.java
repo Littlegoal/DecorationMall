@@ -3,7 +3,7 @@ package com.pdwy.model;
 import java.io.Serializable;
 
 /**
- * ÉÌÆ·Àà±ğ±í£¨ÉÌÆ·Èı¼¶·ÖÀà±í£©
+ * å•†å“ç±»åˆ«è¡¨ï¼ˆå•†å“ä¸‰çº§åˆ†ç±»è¡¨ï¼‰
  * @author MaYunpeng
  * @version 1.0
  */
@@ -13,15 +13,15 @@ public class CommodityTypeLevelThree implements Serializable {
      */
 
     private static final long serialVersionUID = 1L;
-    //ÉÌÆ·Èı¼¶·ÖÀàid
+    //å•†å“ä¸‰çº§åˆ†ç±»id
     private Long typeLevelThreeId;
-    //ÉÌÆ·Èı¼¶·ÖÀàÃû³Æ
+    //å•†å“ä¸‰çº§åˆ†ç±»åç§°
     private String typeLevelThreeName;
-    //ÉÌÆ·¶ş¼¶·ÖÀàid
+    //å•†å“äºŒçº§åˆ†ç±»id
     private Long typeLevelTwoId;
-    //É¾³ı±ê¼ÇÎ»,Î´É¾³ıÎª1,ÒÑÉ¾³ıÎª0
+    //åˆ é™¤æ ‡è®°ä½,æœªåˆ é™¤ä¸º1,å·²åˆ é™¤ä¸º0
     private int isDeleted;
-    //×îºó¸üĞÂÊ±¼ä
+    //æœ€åæ›´æ–°æ—¶é—´
     private String updateTime;
 
     public Long getTypeLevelThreeId() {
