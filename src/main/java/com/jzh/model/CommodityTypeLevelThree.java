@@ -1,4 +1,4 @@
-package com.pdwy.model;
+package com.jzh.model;
 
 import java.io.Serializable;
 

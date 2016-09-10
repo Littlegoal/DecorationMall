@@ -1,6 +1,6 @@
-package com.pdwy.dao;
+package com.jzh.dao;
 
-import com.pdwy.model.CommodityTypeLevelThree;
+import com.jzh.model.CommodityTypeLevelThree;
 
 import java.util.List;
 

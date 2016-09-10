@@ -1,6 +1,6 @@
-package com.pdwy.dao;
+package com.jzh.dao;
 
-import com.pdwy.model.CommodityTypeLevelTwo;
+import com.jzh.model.CommodityTypeLevelTwo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

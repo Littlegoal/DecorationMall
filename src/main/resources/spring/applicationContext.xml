@@ -13,7 +13,7 @@
        <task:annotation-driven /> <!-- 定时器开关-->
 
        <!-- Activates scanning of @Repository and @service -->
-       <context:component-scan base-package="com.pdwy">
+       <context:component-scan base-package="com.jzh">
               <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
        </context:component-scan>
 

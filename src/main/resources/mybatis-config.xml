@@ -5,10 +5,10 @@
 <configuration>
        <!-- 命名空间 -->
        <typeAliases>
-           <typeAlias alias="CommodityTypeLevelOne" type="com.pdwy.model.CommodityTypeLevelOne"/>
-           <typeAlias alias="CommodityTypeLevelTwo" type="com.pdwy.model.CommodityTypeLevelTwo"/>
-           <typeAlias alias="CommodityTypeLevelThree" type="com.pdwy.model.CommodityTypeLevelThree"/>
-           <typeAlias alias="CommodityHomepageRecommend" type="com.pdwy.model.CommodityHomepageRecommend"/>
+           <typeAlias alias="CommodityTypeLevelOne" type="com.jzh.model.CommodityTypeLevelOne"/>
+           <typeAlias alias="CommodityTypeLevelTwo" type="com.jzh.model.CommodityTypeLevelTwo"/>
+           <typeAlias alias="CommodityTypeLevelThree" type="com.jzh.model.CommodityTypeLevelThree"/>
+           <typeAlias alias="CommodityHomepageRecommend" type="com.jzh.model.CommodityHomepageRecommend"/>
        </typeAliases>
 
 </configuration>
