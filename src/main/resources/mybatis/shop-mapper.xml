@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzh.dao.ShopDao">
+
+    <!-- Shop集合申明 -->
+    <resultMap id="shopMap" type="Shop">
+        <id property="id" column="shop_id"/>
+        <result property="name" column="shop_name"/>
+        <result property="introduce" column="shop_introduce"/>
+        <result property="contact" column="contact_information"/>
+        <result property="displayImage" column="img_shop"/>
+        <result property="qrCode" column="qr_code"/>
+        <result property="qq" column="qq"/>
+        <result property="typeSet" column="commodity_type_id_set"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <!--把需要查询的字段写成公用列-->
+    <sql id="base_column">
+        shop_id,shop_name,,shop_introduce,contact_information,img_shop,qr_code,qq,commodity_type_id_set,is_deleted,update_time
+    </sql>
+
+    <!-- 搜素所有未逻辑删除的Shop-->
+    <select id="listAll" resultMap="shopMap">
+        select
+        <include refid="base_column"/>
+        from
+        shop where is_deleted = 1
+    </select>
+
+    <!-- 新增Shop -->
+    <insert id="insert" parameterType="Shop">
+        insert into
+        shop
+        (shop_id,shop_name,,shop_introduce,contact_information,img_shop,qr_code,qq,commodity_type_id_set,is_deleted,update_time)
+        values
+        (
+        #{id},#{name},#{introduce},#{contact},#{displayImage},#{qrCode},#{qq},#{typeSet},#{isDeleted},#{updateTime}
+        )
+    </insert>
+
+    <!-- 更新Shop -->
+    <update id="update" parameterType="Shop">
+        update
+        shop
+        set
+        shop_name=#{shopName},
+        shop_name=#{shopName},
+        contact_information=#{contact},
+        img_shop=#{displayImage},
+        qr_code=#{qrCode},
+        qq=#{qq},
+        commodity_type_id_set=#{typeSet},
+        is_deleted=#{isDeleted},
+        update_time=#{updateTime}
+        where
+        shop_id=#{id}
+    </update>
+
+    <!-- 删除Shop -->
+    <delete id="delete">
+        update
+        shop
+        set
+        is_deleted=0,
+        update_time=#{updateTime}
+        where
+        id=#{shop_id}
+    </delete>
+
+    <!-- 查询Shop -->
+    <select id="get" parameterType="Long" resultMap="Shop">
+        select
+        <include refid="base_column"/>
+        from
+        shop
+        where
+        shop_id=#{id} and is_deleted = 1
+    </select>
+
+</mapper>
