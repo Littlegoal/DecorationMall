@@ -2,6 +2,7 @@ package com.jzh.service.impl;
 
 import com.jzh.service.GenericService;
 import com.jzh.dao.GenericDao;
+import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
  * @author Yunpeng Ma
  * @version 1.0
  */
+@Service("genericService")
 public class GenericServiceImpl<T, PK extends Serializable> implements GenericService <T, PK> {
 
     protected  GenericDao <T, PK> dao;
@@ -43,7 +45,7 @@ public class GenericServiceImpl<T, PK extends Serializable> implements GenericSe
     }
 
     @Override
-    public int delete(PK id, String updateTime) {
-        return dao.delete(id,updateTime);
+    public int delete(PK id) {
+        return dao.delete(id);
     }
 }

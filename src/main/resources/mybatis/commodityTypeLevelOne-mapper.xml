@@ -29,7 +29,7 @@
         commodity_type_level_one (level_one_name,is_deleted,update_time)
         values
         (
-        #{typeLevelOneName},#{isDeleted},#{updateTime}
+        #{typeLevelOneName},#{isDeleted},now()
         )
     </insert>
 
@@ -40,18 +40,18 @@
         set
         level_one_name=#{typeLevelOneName},
         is_deleted=#{isDeleted},
-        update_time=#{updateTime}
+        update_time=now()
         where
         level_one_id=#{typeLevelOneId}
     </update>
 
     <!-- 删除CommodityTypeLevelOne -->
-    <delete id="delete">
+    <delete id="delete" parameterType="Long">
         update
         commodity_type_level_one
         set
         is_deleted=0,
-        update_time=#{updateTime}
+        update_time=now()
         where
         level_one_id=#{typeLevelOneId}
     </delete>

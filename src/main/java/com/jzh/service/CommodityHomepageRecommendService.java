@@ -1,4 +1,4 @@
-package com.jzh.dao;
+package com.jzh.service;
 
 import com.jzh.model.CommodityHomepageRecommend;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * @author Yunpeng Ma
  * @version 1.0
  */
-public interface CommodityHomepageRecommendDao extends GenericDao<CommodityHomepageRecommend,Long> {
+public interface CommodityHomepageRecommendService extends GenericService<CommodityHomepageRecommend,Long> {
 
     @Override
     List<CommodityHomepageRecommend> listAll();

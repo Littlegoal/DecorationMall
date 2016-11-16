@@ -43,9 +43,8 @@ public interface GenericDao <T, PK extends Serializable> {
     /**
      * 删除数据
      * @param id
-     * @param updateTime
      * @return
      */
-    int delete(final PK id, String updateTime);
+    int delete(final PK id);
 
 }

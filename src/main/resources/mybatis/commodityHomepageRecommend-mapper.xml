@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzh.dao.CommodityHomepageRecommendDao">
+
+    <!-- CommodityHomepageRecommend集合申明 -->
+    <resultMap id="commodityHomepageRecommendMap" type="CommodityHomepageRecommend">
+        <id property="id" column="id"/>
+        <result property="typeLevelTwoId" column="type_level_two_id"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="shopName" column="shop_name"/>
+        <result property="commodityId" column="commodity_id"/>
+        <result property="commodityName" column="commodity_name"/>
+        <result property="commodityPrice" column="commodity_price"/>
+        <result property="commodityImg" column="commodity_img"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <!--把需要查询的字段写成公用列-->
+    <sql id="base_column">
+        id,type_level_two_id,shop_id,shop_name,commodity_id,commodity_name,commodity_price,commodity_img,is_deleted,update_time
+    </sql>
+
+    <!-- 搜素所有未逻辑删除的CommodityHomepageRecommend-->
+    <select id="listAll" resultMap="commodityHomepageRecommendMap">
+        select
+        <include refid="base_column" />
+        from
+        commodity_homepage_recommend
+    </select>
+
+    <!-- 新增CommodityHomepageRecommend -->
+    <insert id="insert" parameterType="CommodityHomepageRecommend">
+        insert into
+        commodity_homepage_recommend
+        (type_level_two_id,shop_id,shop_name,commodity_id,commodity_name,commodity_price,commodity_img,is_deleted,update_time)
+        values
+        (
+        #{typeLevelTwoId},#{shopId},#{shopName},#{commodityId},#{commodityName},#{commodityPrice},#{commodityImg},#{isDeleted},now()
+        )
+    </insert>
+
+    <!-- 更新CommodityHomepageRecommend -->
+    <update id="update"  parameterType="CommodityHomepageRecommend">
+        update
+        commodity_homepage_recommend
+        set
+        type_level_two_id=#{typeLevelTwoId},
+        shop_id=#{shopId},
+        shop_name=#{shopName},
+        commodity_id=#{commodityId},
+        commodity_name=#{commodityName},
+        commodity_price=#{commodityPrice},
+        commodity_img=#{commodityImg},
+        is_deleted=#{isDeleted},
+        update_time=now()
+        where
+        id=#{id}
+    </update>
+
+    <!-- 删除CommodityHomepageRecommend-->
+    <delete id="delete" parameterType="Long">
+        update
+        commodity_homepage_recommend
+        set
+        is_deleted=0,
+        update_time=now()
+        where
+        id=#{id}
+    </delete>
+
+    <!-- 查询CommodityHomepageRecommend -->
+    <select id="get" parameterType="Long" resultMap="commodityHomepageRecommendMap">
+        select
+        <include refid="base_column" />
+        from
+        commodity_homepage_recommend
+        where
+        id=#{id}
+    </select>
+
+</mapper>

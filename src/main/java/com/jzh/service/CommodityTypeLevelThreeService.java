@@ -1,7 +1,6 @@
-package com.jzh.dao;
+package com.jzh.service;
 
 import com.jzh.model.CommodityTypeLevelThree;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -9,13 +8,13 @@ import java.util.List;
  * @author Yunpeng Ma
  * @version 1.0
  */
-public interface CommodityTypeLevelThreeDao extends GenericDao<CommodityTypeLevelThree,Long> {
+public interface CommodityTypeLevelThreeService extends GenericService<CommodityTypeLevelThree,Long> {
 
     @Override
     List<CommodityTypeLevelThree> listAll();
 
     @Override
-    CommodityTypeLevelThree get(@Param("typeLevelThreeId")final Long id);
+    CommodityTypeLevelThree get(final Long id);
 
     @Override
     int insert(CommodityTypeLevelThree entity);
@@ -24,5 +23,5 @@ public interface CommodityTypeLevelThreeDao extends GenericDao<CommodityTypeLeve
     int update(CommodityTypeLevelThree entity);
 
     @Override
-    int delete(@Param("typeLevelThreeId")final Long id);
+    int delete(final Long id);
 }

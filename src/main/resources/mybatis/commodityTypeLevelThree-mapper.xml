@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzh.dao.CommodityTypeLevelThreeDao">
+
+    <!-- CommodityTypeLevelThree集合申明 -->
+    <resultMap id="commodityTypeLevelThreeMap" type="CommodityTypeLevelThree">
+        <id property="typeLevelThreeId" column="level_three_id"/>
+        <result property="typeLevelThreeName" column="level_three_name"/>
+        <result property="typeLevelTwoId" column="level_two_id"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <!--把需要查询的字段写成公用列-->
+    <sql id="base_column">
+        level_three_id,level_three_name,level_two_id,is_deleted,update_time
+    </sql>
+
+    <!-- 搜素所有未逻辑删除的CommodityTypeLevelThree-->
+    <select id="listAll" resultMap="commodityTypeLevelThreeMap">
+        select
+        <include refid="base_column" />
+        from
+        commodity_type_level_three
+    </select>
+
+    <!-- 新增CommodityTypeLevelThree -->
+    <insert id="insert" parameterType="CommodityTypeLevelThree">
+        insert into
+        commodity_type_level_three (level_three_name,level_two_id,is_deleted,update_time)
+        values
+        (
+        #{typeLevelThreeName},#{typeLevelTwoId},#{isDeleted},now()
+        )
+    </insert>
+
+    <!-- 更新CommodityTypeLevelThree -->
+    <update id="update"  parameterType="CommodityTypeLevelThree">
+        update
+        commodity_type_level_three
+        set
+        level_one_name=#{typeLevelThreeName},
+        level_two_id=#{typeLevelTwoId},
+        is_deleted=#{isDeleted},
+        update_time=now()
+        where
+        level_three_id=#{typeLevelThreeId}
+    </update>
+
+    <!-- 删除CommodityTypeLevelThree -->
+    <delete id="delete" parameterType="Long">
+        update
+        commodity_type_level_three
+        set
+        is_deleted=0,
+        update_time=now()
+        where
+        level_three_id=#{typeLevelThreeId}
+    </delete>
+
+    <!-- 查询CommodityTypeLevelThree -->
+    <select id="get" parameterType="Long" resultMap="commodityTypeLevelThreeMap">
+        select
+        <include refid="base_column" />
+        from
+        commodity_type_level_three
+        where
+        level_three_id=#{typeLevelThreeId}
+    </select>
+
+</mapper>
