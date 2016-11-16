@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzh.dao.CustomerDao">
+
+    <!-- Customer集合申明 -->
+    <resultMap id="CustomerMap" type="Customer">
+        <id property="id" column="customer_id"/>
+        <result property="account" column="customer_account"/>
+        <result property="password" column="customer_pwd"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="latestUpdateTime" column="update_time"/>
+    </resultMap>
+
+    <!--把需要查询的字段写成公用列-->
+    <sql id="base_column">
+        customer_id,customer_account,customer_pwd,is_deleted,update_time
+    </sql>
+
+    <!-- 搜素所有未逻辑删除的Customer-->
+    <select id="listAll" resultMap="CustomerMap">
+        select
+        <include refid="base_column"/>
+        from
+        customer where is_deleted = 1
+    </select>
+
+    <!-- 新增Customer -->
+    <insert id="insert" parameterType="Customer">
+        insert into
+        customer
+        (customer_account,customer_pwd,is_deleted,update_time)
+        values
+        (
+        #{account},#{password},#{isDeleted},now()
+        )
+    </insert>
+
+    <!-- 更新Customer -->
+    <update id="update" parameterType="Customer">
+        update
+        customer
+        set
+        customer_account=#{account},
+        customer_pwd=#{password},
+        is_deleted=#{isDeleted},
+        update_time=now()
+        where
+        customer_id=#{id}
+    </update>
+
+    <!-- 删除Customer -->
+    <delete id="delete" parameterType="Long">
+        update
+        customer
+        set
+        is_deleted=0,
+        update_time=now()
+        where
+        customer_id=#{id}
+    </delete>
+
+    <!-- 查询Customer -->
+    <select id="get" parameterType="Long" resultMap="CustomerMap">
+        select
+        <include refid="base_column"/>
+        from
+        customer
+        where
+        customer_id=#{id} and is_deleted = 1
+    </select>
+
+</mapper>

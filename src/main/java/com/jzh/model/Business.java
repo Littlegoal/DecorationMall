@@ -3,12 +3,12 @@ package com.jzh.model;
 import java.io.Serializable;
 
 /**
- * 商家客户表
+ * 商家表 commodity_client
  *
  * @author Junhao Zhou
  * @version 1.0
  */
-public class Client implements Serializable {
+public class Business implements Serializable {
 
     /**
      *
@@ -16,7 +16,7 @@ public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 客户id
+     * 商家id
      */
     private Long id;
 

@@ -13,12 +13,12 @@
         <result property="qq" column="qq"/>
         <result property="typeSet" column="commodity_type_id_set"/>
         <result property="isDeleted" column="is_deleted"/>
-        <result property="updateTime" column="update_time"/>
+        <result property="latestUpdateTime" column="update_time"/>
     </resultMap>
 
     <!--把需要查询的字段写成公用列-->
     <sql id="base_column">
-        shop_id,shop_name,,shop_introduce,contact_information,img_shop,qr_code,qq,commodity_type_id_set,is_deleted,update_time
+        shop_id,shop_name,shop_introduce,contact_information,img_shop,qr_code,qq,commodity_type_id_set,is_deleted,update_time
     </sql>
 
     <!-- 搜素所有未逻辑删除的Shop-->
@@ -33,10 +33,10 @@
     <insert id="insert" parameterType="Shop">
         insert into
         shop
-        (shop_id,shop_name,,shop_introduce,contact_information,img_shop,qr_code,qq,commodity_type_id_set,is_deleted,update_time)
+        (shop_name,shop_introduce,contact_information,img_shop,qr_code,qq,commodity_type_id_set,is_deleted,update_time)
         values
         (
-        #{id},#{name},#{introduce},#{contact},#{displayImage},#{qrCode},#{qq},#{typeSet},#{isDeleted},#{updateTime}
+        #{name},#{introduce},#{contact},#{displayImage},#{qrCode},#{qq},#{typeSet},#{isDeleted},now()
         )
     </insert>
 
@@ -53,7 +53,7 @@
         qq=#{qq},
         commodity_type_id_set=#{typeSet},
         is_deleted=#{isDeleted},
-        update_time=#{updateTime}
+        update_time=now()
         where
         shop_id=#{id}
     </update>
@@ -64,13 +64,13 @@
         shop
         set
         is_deleted=0,
-        update_time=#{updateTime}
+        update_time=now()
         where
         id=#{shop_id}
     </delete>
 
     <!-- 查询Shop -->
-    <select id="get" parameterType="Long" resultMap="Shop">
+    <select id="get" parameterType="Long" resultMap="ShopMap">
         select
         <include refid="base_column"/>
         from

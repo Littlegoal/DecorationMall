@@ -3,12 +3,13 @@ package com.jzh.model;
 import java.io.Serializable;
 
 /**
- * 用户实体
+ * 用户实体 customer
  *
  * @author Junhao Zhou
  * @version 1.0
  */
 public class Customer implements Serializable {
+
     /**
      *
      */

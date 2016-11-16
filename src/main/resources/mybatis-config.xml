@@ -10,6 +10,8 @@
            <typeAlias alias="CommodityTypeLevelThree" type="com.jzh.model.CommodityTypeLevelThree"/>
            <typeAlias alias="CommodityHomepageRecommend" type="com.jzh.model.CommodityHomepageRecommend"/>
            <typeAlias alias="Shop" type="com.jzh.model.Shop"/>
+           <typeAlias alias="Customer" type="com.jzh.model.Customer"/>
+           <typeAlias alias="Business" type="com.jzh.model.Business"/>
        </typeAliases>
 
 </configuration>

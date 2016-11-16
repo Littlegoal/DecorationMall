@@ -192,14 +192,14 @@ CREATE TABLE `commodity_attribute` (
 -- ----------------------------
 -- Table structure for commodity_client
 -- ----------------------------
-DROP TABLE IF EXISTS `commodity_client`;
+DROP TABLE IF EXISTS `business`;
 CREATE TABLE `commodity_client` (
-  `client_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '客户id',
-  `client_account` varchar(30) NOT NULL COMMENT '账号',
-  `client_pwd` varchar(20) NOT NULL COMMENT '密码',
+  `business_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '客户id',
+  `business_account` varchar(30) NOT NULL COMMENT '账号',
+  `business_pwd` varchar(20) NOT NULL COMMENT '密码',
   `is_deleted` int(1) NOT NULL COMMENT '删除标记位，未删除为1，已删除为0',
   `update_time` datetime NOT NULL COMMENT '最后更新时间',
-  PRIMARY KEY (`client_id`)
+  PRIMARY KEY (`business_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商家客户表';
 
 -- ----------------------------
