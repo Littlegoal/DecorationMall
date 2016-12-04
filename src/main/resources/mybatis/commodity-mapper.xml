@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzh.dao.CommodityDao">
+
+    <!-- Commodity集合申明 -->
+    <resultMap id="CommodityMap" type="Commodity">
+        <id property="id" column="commodity_id"/>
+        <result property="typeId" column="commodity_type_id"/>
+        <result property="name" column="commodity_name"/>
+        <result property="price" column="price"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="imgPrincipal" column="img_principal" />
+        <result property="imgDrawing" column="img_drawing"/>
+        <result property="imgShot" column="img_shot"/>
+        <result property="imgSize" column="img_size"/>
+        <result property="imgDetail" column="img_detail"/>
+        <result property="imgMaterial" column="img_material"/>
+        <result property="imgAdvantage" column="img_advantage"/>
+        <result property="introduce" column="commodity_introduce"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <!--把需要查询的字段写成公用列-->
+    <sql id="base_column">
+        commodity_id,commodity_type_id,commodity_name,price,shop_id,img_principal,img_drawing,img_shot,
+        img_size,img_detail,img_material,img_advantage,commodity_introduce,is_deleted,update_time
+    </sql>
+
+    <!-- 搜素所有未逻辑删除的Commodity-->
+    <select id="listAll" resultMap="CommodityMap">
+        select
+        <include refid="base_column" />
+        from commodity
+    </select>
+
+    <!-- 新增Commodity -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Commodity" >
+        insert into
+        commodity
+        (
+          commodity_type_id,commodity_name,price,shop_id,img_principal,img_drawing,img_shot,
+          img_size,img_detail,img_material,img_advantage,commodity_introduce,is_deleted,update_time
+        )
+        values
+        (
+            #{typeId},#{name},#{price},#{shopId},#{imgPrincipal},#{imgDrawing},#{imgShot},#{imgSize},
+            #{imgDetail},#{imgMaterial},#{imgAdvantage},#{introduce},0,NOW()
+        )
+    </insert>
+
+    <!-- 更新Commodity -->
+    <update id="update"  parameterType="Commodity">
+        update commodity
+        set
+            commodity_type_id=#{typeId},
+            commodity_name=#{name},
+            price=#{price},
+            shop_id=#{shopId},
+            img_principal=#{imgPrincipal},
+            img_drawing=#{imgDrawing},
+            img_shot=#{imgShot},
+            img_size=#{imgSize},
+            img_detail=#{imgDetail},
+            img_material=#{imgMaterial},
+            img_advantage=#{imgAdvantage},
+            commodity_introduce=#{introduce},
+            is_deleted=#{isDeleted},
+            update_time=NOW()
+        where commodity_id=#{id}
+    </update>
+
+    <!-- 删除Commodity -->
+    <delete id="delete" parameterType="java.lang.Long">
+        update commodity
+        set
+          is_deleted=0,
+          update_time=NOW()
+        where commodity_id=#{id}
+    </delete>
+
+    <!-- 查询Commodity -->
+    <select id="get" parameterType="java.lang.Long" resultMap="CommodityMap">
+        select
+        <include refid="base_column" />
+        from commodity
+        where commodity_id=#{0}
+    </select>
+
+    <select id="getCommodityById" parameterType="java.lang.Long" resultMap="CommodityMap">
+        select
+        <include refid="base_column" />
+        from commodity
+        where commodity_id=#{id}
+    </select>
+    
+    <select id="getCommodityByType" parameterType="java.lang.Long" resultMap="CommodityMap">
+        select
+        <include refid="base_column" />
+        from commodity
+        where commodity_type_id=#{typeId}
+    </select>
+
+    <select id="getCommodityByShopAndType" parameterType="java.lang.Long" resultMap="CommodityMap">
+        select
+        <include refid="base_column" />
+        from commodity
+        where
+          shop_id=#{0}
+          <if test="#{1} != -1">
+              AND commodity_type_id=#{1}
+          </if>
+    </select>
+</mapper>

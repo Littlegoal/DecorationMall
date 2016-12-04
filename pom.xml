@@ -242,6 +242,20 @@
       <artifactId>httpcore</artifactId>
       <version>4.4.4</version>
     </dependency>
+
+    <!-- 七牛-->
+    <dependency>
+      <groupId>com.qiniu</groupId>
+      <artifactId>qiniu-java-sdk</artifactId>
+      <version>7.2.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.squareup.okhttp</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>2.6.0</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>jzh</finalName>
@@ -271,7 +285,7 @@
           <contextPath>/</contextPath>
           <connectors>
             <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-              <port>8080</port>
+              <port>8081</port>
             </connector>
           </connectors>
         </configuration>
