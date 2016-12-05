@@ -18,7 +18,7 @@ public class BusinessServiceImpl extends GenericServiceImpl<Business, Long>
     private BusinessDao businessDao;
 
     @Autowired
-    public BusinessServiceImpl(BusinessDao<Business, Long> businessDao) {
+    public BusinessServiceImpl(BusinessDao businessDao) {
         super(businessDao);
         this.businessDao = businessDao;
     }

@@ -38,7 +38,7 @@ public class Customer implements Serializable {
     /**
      * 删除标记位
      */
-    private int isDelete;
+    private int isDeleted;
 
     public Long getId() {
         return id;
@@ -64,12 +64,12 @@ public class Customer implements Serializable {
         this.password = password;
     }
 
-    public int getIsDelete() {
-        return isDelete;
+    public int getIsDeleted() {
+        return isDeleted;
     }
 
-    public void setIsDelete(int isDelete) {
-        this.isDelete = isDelete;
+    public void setIsDeleted(int isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
     public String getLatestUpdateTime() {

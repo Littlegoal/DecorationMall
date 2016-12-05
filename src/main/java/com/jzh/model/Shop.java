@@ -58,7 +58,7 @@ public class Shop implements Serializable {
     /**
      * 商铺商品类型集合
      */
-    private List<Long> commodityTypes;
+    private String commodityTypes;
 
     /**
      * 最近更新时间
@@ -68,7 +68,7 @@ public class Shop implements Serializable {
     /**
      * 删除标记位
      */
-    private int isDelete;
+    private int isDeleted;
 
     public Long getId() {
         return id;
@@ -134,11 +134,11 @@ public class Shop implements Serializable {
         this.qq = qq;
     }
 
-    public List<Long> getCommodityTypes() {
+    public String getCommodityTypes() {
         return commodityTypes;
     }
 
-    public void setCommodityTypes(List<Long> commodityTypes) {
+    public void setCommodityTypes(String commodityTypes) {
         this.commodityTypes = commodityTypes;
     }
 
@@ -150,11 +150,11 @@ public class Shop implements Serializable {
         this.latestUpdateTime = latestUpdateTime;
     }
 
-    public int getIsDelete() {
-        return isDelete;
+    public int getIsDeleted() {
+        return isDeleted;
     }
 
-    public void setIsDelete(int isDelete) {
-        this.isDelete = isDelete;
+    public void setIsDeleted(int isDeleted) {
+        this.isDeleted = isDeleted;
     }
 }

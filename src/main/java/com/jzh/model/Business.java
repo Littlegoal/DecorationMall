@@ -38,7 +38,7 @@ public class Business implements Serializable {
     /**
      * 删除标记位
      */
-    private int isDelete;
+    private int isDeleted;
 
     public Long getId() {
         return id;
@@ -72,11 +72,11 @@ public class Business implements Serializable {
         this.latestUpdateTime = latestUpdateTime;
     }
 
-    public int getIsDelete() {
-        return isDelete;
+    public int getIsDeleted() {
+        return isDeleted;
     }
 
-    public void setIsDelete(int isDelete) {
-        this.isDelete = isDelete;
+    public void setIsDeleted(int isDeleted) {
+        this.isDeleted = isDeleted;
     }
 }

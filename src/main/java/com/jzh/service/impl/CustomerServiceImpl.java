@@ -18,7 +18,7 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long>
     private CustomerDao customerDao;
 
     @Autowired
-    public CustomerServiceImpl(CustomerDao<Customer, Long> customerDao) {
+    public CustomerServiceImpl(CustomerDao customerDao) {
         super(customerDao);
         this.customerDao = customerDao;
     }
