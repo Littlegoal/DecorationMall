@@ -70,7 +70,7 @@
     </delete>
 
     <!-- 查询Shop -->
-    <select id="get" parameterType="Long" resultMap="ShopMap">
+    <select id="get" parameterType="Long" resultMap="shopMap">
         select
         <include refid="base_column"/>
         from
