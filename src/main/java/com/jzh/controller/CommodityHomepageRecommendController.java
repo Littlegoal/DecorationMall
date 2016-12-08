@@ -1,6 +1,8 @@
 package com.jzh.controller;
 
-import com.jzh.service.CommodityHomepageRecommendService;
+import com.google.gson.Gson;
+import com.jzh.model.Commodity;
+import com.jzh.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +20,43 @@ public class CommodityHomepageRecommendController {
 
     @Autowired
     CommodityHomepageRecommendService commodityHomepageRecommendService;
+    @Autowired
+    CommodityTypeLevelOneService commodityTypeLevelOneService;
+    @Autowired
+    CommodityTypeLevelThreeService commodityTypeLevelThreeService;
+    @Autowired
+    CommodityTypeLevelTwoService commodityTypeLevelTwoService;
+    @Autowired
+    CommodityService commodityService;
+    @Autowired
+    CustomerService customerService;
+    @Autowired
+    BusinessService businessService;
+    @Autowired
+    ShopService shopService;
 
     @RequestMapping(value = "/chrc/list", method = {RequestMethod.GET,RequestMethod.POST})
     public void list(){
-        System.out.println(commodityHomepageRecommendService.listAll());
-        System.out.println("ssssssssss");
+        Gson gson = new Gson();
+
+        String str1 = gson.toJson(commodityHomepageRecommendService.listAll());
+        String str2 = gson.toJson(commodityService.listAll());
+        String str3 = gson.toJson(commodityTypeLevelOneService.listAll());
+        String str4 = gson.toJson(commodityTypeLevelThreeService.listAll());
+        String str5 = gson.toJson(commodityTypeLevelTwoService.listAll());
+        String str6 = gson.toJson(shopService.listAll());
+        String str7 = gson.toJson(customerService.listAll());
+        String str8 = gson.toJson(businessService.listAll());
+
+        System.out.println(str1);
+        System.out.println(str2);
+        System.out.println(str3);
+        System.out.println(str4);
+        System.out.println(str5);
+        System.out.println(str6);
+        System.out.println(str7);
+        System.out.println(str8);
+
     }
 
     @RequestMapping(value = "/", method = {RequestMethod.GET,RequestMethod.POST})
@@ -37,13 +71,26 @@ public class CommodityHomepageRecommendController {
 
     @RequestMapping(value = "/api/shop/123", method = {RequestMethod.GET,RequestMethod.POST})
     @ResponseBody
-    public String list1() throws IOException {
-        File file = new File("C:\\Users\\XinLian\\Desktop\\test.json");
+    public String shopData() throws IOException {
+        File file = new File("C:\\Users\\XinLian\\Desktop\\shopDetail.json");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line = br.readLine();
         br.close();
         return line;
-//        String str = "{\"id\":123456,\"name\":\"小店铺\",\"contact\":{\"qq\":\"QQ\",\"qrcode\":\"\",\"phone\":\"199999999\",\"name\":\"小张\"},\"introduction\":\"介绍\",\"img\":\"\",\"classes\":[{\"name\":\"全部用品\",\"id\":0},{\"name\":\"卧室用品\",\"id\":1},{\"name\":\"床品\",\"id\":2}],\"goodsInfo\":{\"currentClass\":\"1\",\"goods\":[{\"id\":123,\"title\":\"合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗\",\"price\":2011.0,\"mainImg\":\"http://www.hetaojia.com/shop/hetao/index/2-1.jpg\"},{\"id\":456,\"title\":\"合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗\",\"price\":2012.0,\"mainImg\":\"http://www.hetaojia.com/shop/hetao/index/2-1.jpg\"},{\"id\":111,\"title\":\"合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗\",\"price\":2013.0,\"mainImg\":\"http://www.hetaojia.com/shop/hetao/index/2-1.jpg\"},{\"id\":222,\"title\":\"合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗\",\"price\":2014.0,\"mainImg\":\"http://www.hetaojia.com/shop/hetao/index/2-1.jpg\"},{\"id\":333,\"title\":\"合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗\",\"price\":2015.0,\"mainImg\":\"http://www.hetaojia.com/shop/hetao/index/2-1.jpg\"},{\"id\":444,\"title\":\"合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗\",\"price\":2016.0,\"mainImg\":\"http://www.hetaojia.com/shop/hetao/index/2-1.jpg\"}],\"page\":2,\"totalPage\":4,\"totalCount\":34}}\n";
-//        return str;
+    }
+
+    @RequestMapping(value = "/goods/123", method = {RequestMethod.GET,RequestMethod.POST})
+    public String goods(){
+        return "index";
+    }
+
+    @RequestMapping(value = "/api/goods/123", method = {RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public String goodsData() throws IOException {
+        File file = new File("C:\\Users\\XinLian\\Desktop\\goodsDetail.json");
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String line = br.readLine();
+        br.close();
+        return line;
     }
 }

@@ -616,7 +616,7 @@
 <body>
 <div id="content"></div>
 <!--<script src="http://localhost:8080/webpack-dev-server.js"></script>-->
-<script src="http://45.32.56.238:8080/main.bundle.js" ></script>
+<script src="http://127.0.0.1:8080/main.bundle.js" ></script>
 <!--<script src="https://raw.githubusercontent.com/shellming/fitmentFrontEnd/master/main.bundle.js" ></script>-->
 </body>
 </html>

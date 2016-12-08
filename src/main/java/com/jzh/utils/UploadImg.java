@@ -1,4 +1,4 @@
-package com.jzh.utils;
+package test4;
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.UploadManager;
@@ -7,62 +7,58 @@ import com.qiniu.storage.Configuration;
 import com.qiniu.util.Auth;
 import java.io.IOException;
 
-/**
- * @author Yunpeng Ma
- * @version 1.0
- */
 public class UploadImg {
-    //ÉèÖÃºÃÕËºÅµÄACCESS_KEYºÍSECRET_KEY
+    //è®¾ç½®å¥½è´¦å·çš„ACCESS_KEYå’ŒSECRET_KEY
     String ACCESS_KEY = "kEg-P264ezTGiKlnHjOENI71CzcxNk30KIecYsf_";
     String SECRET_KEY = "1zU6_956bO0un56e5IwJx2gxpcOeJ0AsrZPn9JOU";
-    //ÒªÉÏ´«µÄ¿Õ¼ä
+    //è¦ä¸Šä¼ çš„ç©ºé—´
     String bucketname = "jzh-test";
-    //ÉÏ´«µ½ÆßÅ£ºó±£´æµÄÎÄ¼şÃû
+    //ä¸Šä¼ åˆ°ä¸ƒç‰›åä¿å­˜çš„æ–‡ä»¶å
     String key = "my-java.png";
-    //ÉÏ´«ÎÄ¼şµÄÂ·¾¶
-    String FilePath = "/.../...";
+    //ä¸Šä¼ æ–‡ä»¶çš„è·¯å¾„
+    String FilePath = "C://Users//XinLian//Desktop//ç”³ç‰§èˆª.jpg";
 
-    //ÃÜÔ¿ÅäÖÃ
+    //å¯†é’¥é…ç½®
     Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);
 
-    ///////////////////////Ö¸¶¨ÉÏ´«µÄZoneµÄĞÅÏ¢//////////////////
-    //µÚÒ»ÖÖ·½Ê½: Ö¸¶¨¾ßÌåµÄÒªÉÏ´«µÄzone
-    //×¢£º¸Ã¾ßÌåÖ¸¶¨µÄ·½Ê½ºÍÒÔÏÂ×Ô¶¯Ê¶±ğµÄ·½Ê½Ñ¡ÔñÆäÒ»¼´¿É
-    //ÒªÉÏ´«µÄ¿Õ¼ä(bucket)µÄ´æ´¢ÇøÓòÎª»ª¶«Ê±
+    ///////////////////////æŒ‡å®šä¸Šä¼ çš„Zoneçš„ä¿¡æ¯//////////////////
+    //ç¬¬ä¸€ç§æ–¹å¼: æŒ‡å®šå…·ä½“çš„è¦ä¸Šä¼ çš„zone
+    //æ³¨ï¼šè¯¥å…·ä½“æŒ‡å®šçš„æ–¹å¼å’Œä»¥ä¸‹è‡ªåŠ¨è¯†åˆ«çš„æ–¹å¼é€‰æ‹©å…¶ä¸€å³å¯
+    //è¦ä¸Šä¼ çš„ç©ºé—´(bucket)çš„å­˜å‚¨åŒºåŸŸä¸ºåä¸œæ—¶
     // Zone z = Zone.zone0();
-    //ÒªÉÏ´«µÄ¿Õ¼ä(bucket)µÄ´æ´¢ÇøÓòÎª»ª±±Ê±
+    //è¦ä¸Šä¼ çš„ç©ºé—´(bucket)çš„å­˜å‚¨åŒºåŸŸä¸ºååŒ—æ—¶
     Zone z = Zone.zone1();
-    //ÒªÉÏ´«µÄ¿Õ¼ä(bucket)µÄ´æ´¢ÇøÓòÎª»ªÄÏÊ±
+    //è¦ä¸Šä¼ çš„ç©ºé—´(bucket)çš„å­˜å‚¨åŒºåŸŸä¸ºåå—æ—¶
     // Zone z = Zone.zone2();
 
-    //µÚ¶şÖÖ·½Ê½: ×Ô¶¯Ê¶±ğÒªÉÏ´«µÄ¿Õ¼ä(bucket)µÄ´æ´¢ÇøÓòÊÇ»ª¶«¡¢»ª±±¡¢»ªÄÏ¡£
+    //ç¬¬äºŒç§æ–¹å¼: è‡ªåŠ¨è¯†åˆ«è¦ä¸Šä¼ çš„ç©ºé—´(bucket)çš„å­˜å‚¨åŒºåŸŸæ˜¯åä¸œã€ååŒ—ã€åå—ã€‚
     //Zone z = Zone.autoZone();
     Configuration c = new Configuration(z);
 
-    //´´½¨ÉÏ´«¶ÔÏó
+    //åˆ›å»ºä¸Šä¼ å¯¹è±¡
     UploadManager uploadManager = new UploadManager(c);
 
     public static void main(String args[]) throws IOException {
         new UploadImg().upload();
     }
 
-    //¼òµ¥ÉÏ´«£¬Ê¹ÓÃÄ¬ÈÏ²ßÂÔ£¬Ö»ĞèÒªÉèÖÃÉÏ´«µÄ¿Õ¼äÃû¾Í¿ÉÒÔÁË
+    //ç®€å•ä¸Šä¼ ï¼Œä½¿ç”¨é»˜è®¤ç­–ç•¥ï¼Œåªéœ€è¦è®¾ç½®ä¸Šä¼ çš„ç©ºé—´åå°±å¯ä»¥äº†
     public String getUpToken() {
         return auth.uploadToken(bucketname);
     }
 
     public void upload() throws IOException {
         try {
-            //µ÷ÓÃput·½·¨ÉÏ´«
+            //è°ƒç”¨putæ–¹æ³•ä¸Šä¼ 
             Response res = uploadManager.put(FilePath, key, getUpToken());
-            //´òÓ¡·µ»ØµÄĞÅÏ¢
+            //æ‰“å°è¿”å›çš„ä¿¡æ¯
             System.out.println(res.bodyString());
         } catch (QiniuException e) {
             Response r = e.response;
-            // ÇëÇóÊ§°ÜÊ±´òÓ¡µÄÒì³£µÄĞÅÏ¢
+            // è¯·æ±‚å¤±è´¥æ—¶æ‰“å°çš„å¼‚å¸¸çš„ä¿¡æ¯
             System.out.println(r.toString());
             try {
-                //ÏìÓ¦µÄÎÄ±¾ĞÅÏ¢
+                //å“åº”çš„æ–‡æœ¬ä¿¡æ¯
                 System.out.println(r.bodyString());
             } catch (QiniuException e1) {
                 //ignore

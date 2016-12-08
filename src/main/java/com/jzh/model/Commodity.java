@@ -1,70 +1,72 @@
 package com.jzh.model;
 
+import java.io.Serializable;
+
 /**
- * ÉÌÆ·±í
+ * å•†å“è¡¨
  * @author Yun
  * @version 1.0
  */
-public class Commodity implements java.io.Serializable {
+public class Commodity implements Serializable {
     static final long serialVersionUID = 1L;
     /**
-     * ÉÌÆ·id
+     * å•†å“id
      */
     private Long id;
     /**
-     * ÉÌÆ·Àà±ğid
+     * å•†å“ç±»åˆ«id
      */
     private Long typeId;
     /**
-     * ÉÌÆ·Ãû³Æ
+     * å•†å“åç§°
      */
     private String name;
     /**
-     * ÉÌÆ·¼Û¸ñ
+     * å•†å“ä»·æ ¼
      */
     private double price;
     /**
-     * ¹ØÁª {@see Shop.id} µêÆÌ±íµÄid
+     * å…³è” {@see Shop.id} åº—é“ºè¡¨çš„id
      */
     private Long shopId;
     /**
-     * Ö÷Í¼Æ¬£¬¼´¿ÉËõ·ÅÍ¼Æ¬£¬ÒÔ{@see com.jzh.constant.Constants.Commondity}¶¨Òå·Ö¸î¹æÔò
+     * ä¸»å›¾ç‰‡ï¼Œå³å¯ç¼©æ”¾å›¾ç‰‡ï¼Œä»¥{@see com.jzh.constant.Constants.Commondity}å®šä¹‰åˆ†å‰²è§„åˆ™
      */
     private String imgPrincipal;
     /**
-     * Ğ§¹ûÍ¼£¬ÒÔ{@see com.jzh.constant.Constants.Commondity}¶¨Òå·Ö¸î¹æÔò
+     * æ•ˆæœå›¾ï¼Œä»¥{@see com.jzh.constant.Constants.Commondity}å®šä¹‰åˆ†å‰²è§„åˆ™
      */
     private String imgDrawing;
     /**
-     *ÊµÅÄÍ¼£¬ÒÔ{@see com.jzh.constant.Constants.Commondity}¶¨Òå·Ö¸î¹æÔò
+     *å®æ‹å›¾ï¼Œä»¥{@see com.jzh.constant.Constants.Commondity}å®šä¹‰åˆ†å‰²è§„åˆ™
      */
     private String imgShot;
     /**
-     * ³ß´çÍ¼£¬ÒÔ{@see com.jzh.constant.Constants.Commondity}¶¨Òå·Ö¸î¹æÔò
+     * å°ºå¯¸å›¾ï¼Œä»¥{@see com.jzh.constant.Constants.Commondity}å®šä¹‰åˆ†å‰²è§„åˆ™
      */
     private String imgSize;
     /**
-     * Ï¸½ÚÍ¼£¬ÒÔ{@see com.jzh.constant.Constants.Commondity}¶¨Òå·Ö¸î¹æÔò
+     * ç»†èŠ‚å›¾ï¼Œä»¥{@see com.jzh.constant.Constants.Commondity}å®šä¹‰åˆ†å‰²è§„åˆ™
      */
     private String imgDetail;
     /**
-     * ²ÄÖÊÍ¼£¬ÒÔ{@see com.jzh.constant.Constants.Commondity}¶¨Òå·Ö¸î¹æÔò
+     * æè´¨å›¾ï¼Œä»¥{@see com.jzh.constant.Constants.Commondity}å®šä¹‰åˆ†å‰²è§„åˆ™
      */
     private String imgMaterial;
     /**
-     * ÓÅÊÆÍ¼£¬ÒÔ{@see com.jzh.constant.Constants.Commondity}¶¨Òå·Ö¸î¹æÔò
+     * ä¼˜åŠ¿å›¾ï¼Œä»¥{@see com.jzh.constant.Constants.Commondity}å®šä¹‰åˆ†å‰²è§„åˆ™
      */
     private String imgAdvantage;
     /**
-     * ÉÌÆ·½éÉÜ
+     * å•†å“ä»‹ç»
      */
     private String introduce;
     /**
-     * É¾³ı±ê¼ÇÎ»£¬Î´É¾³ıÎª1£¬ÒÑÉ¾³ıÎª0
+     * åˆ é™¤æ ‡è®°ä½ï¼Œæœªåˆ é™¤ä¸º1ï¼Œå·²åˆ é™¤ä¸º0
      */
     private int isDeleted;
     /**
-     * ×îºó¸üĞÂÊ±¼ä
+     * æœ€åæ›´æ–°æ—¶é—´
      */
     private String updateTime;
 

@@ -11,7 +11,7 @@
         <result property="displayImage" column="img_shop"/>
         <result property="qrCode" column="qr_code"/>
         <result property="qq" column="qq"/>
-        <result property="typeSet" column="commodity_type_id_set"/>
+        <result property="commodityTypes" column="commodity_type_id_set"/>
         <result property="isDeleted" column="is_deleted"/>
         <result property="latestUpdateTime" column="update_time"/>
     </resultMap>

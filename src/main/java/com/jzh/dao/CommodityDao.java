@@ -10,27 +10,27 @@ import java.util.List;
 public interface CommodityDao extends GenericDao<Commodity,Long>{
 
     /**
-     * ²éÑ¯ËùÓĞ¶ÔÏó
-     * @return µ¥±íÀïÃæµÄËùÓĞÊı¾İ
+     * æŸ¥è¯¢æ‰€æœ‰å¯¹è±¡
+     * @return å•è¡¨é‡Œé¢çš„æ‰€æœ‰æ•°æ®
      */
     List<Commodity> listAll();
 
     /**
-     * »ñÈ¡µ¥ÌõÊı¾İ
-     * @param id °´ÕÕÖ÷¼üÀ´²éÑ¯µ¥ÌõÊı¾İ
-     * @return Ö÷¼üÎªidµÄÒ»ÌõÊı¾İ£¬Ã»ÓĞ·µ»Ønull
+     * è·å–å•æ¡æ•°æ®
+     * @param id æŒ‰ç…§ä¸»é”®æ¥æŸ¥è¯¢å•æ¡æ•°æ®
+     * @return ä¸»é”®ä¸ºidçš„ä¸€æ¡æ•°æ®ï¼Œæ²¡æœ‰è¿”å›null
      */
     Commodity get(final Long id);
 
     /**
-     * ²åÈëÊı¾İ
-     * @param commodity ĞèÒª²åÈëÉÌÆ·¶ÔÏó
-     * @return ·µ»Ø²åÈëµÄÊı¾İÌõÊı£¬²ôÈëÊı¾İµÄ×Ô¶¯Ôö³¤idÓÉ{@code Commodity.id}À´»ñÈ¡
+     * æ’å…¥æ•°æ®
+     * @param commodity éœ€è¦æ’å…¥å•†å“å¯¹è±¡
+     * @return è¿”å›æ’å…¥çš„æ•°æ®æ¡æ•°ï¼Œæºå…¥æ•°æ®çš„è‡ªåŠ¨å¢é•¿idç”±{@code Commodity.id}æ¥è·å–
      */
     int insert(Commodity commodity);
 
     /**
-     * ¸üĞÂÊı¾İ
+     * æ›´æ–°æ•°æ®
      *
      * @param commodity
      * @return
@@ -38,7 +38,7 @@ public interface CommodityDao extends GenericDao<Commodity,Long>{
     int update(Commodity commodity);
 
     /**
-     * É¾³ıÊı¾İ
+     * åˆ é™¤æ•°æ®
      * @param id
      * @param updateTime
      * @return
@@ -46,23 +46,23 @@ public interface CommodityDao extends GenericDao<Commodity,Long>{
     int delete(final Long id, String updateTime);
 
     /**
-     * Í¨¹ıÉÌÆ·idÀ´»ñÈ¡ÉÌÆ·£¬{@see get}
-     * @param id ÉÌÆ·id
+     * é€šè¿‡å•†å“idæ¥è·å–å•†å“ï¼Œ{@see get}
+     * @param id å•†å“id
      * @return
      */
     Commodity getCommodityById(Long id);
 
     /**
-     * Í¨¹ıÈı¼¶·ÖÀàÀïÃæµÄÉÌÆ·ÀàĞÍidÀ´»ñÈ¡ÉÌÆ·
-     * @param typeId ÉÌÆ·ÀàĞÍid
+     * é€šè¿‡ä¸‰çº§åˆ†ç±»é‡Œé¢çš„å•†å“ç±»å‹idæ¥è·å–å•†å“
+     * @param typeId å•†å“ç±»å‹id
      * @return
      */
     List<Commodity> getCommodityByType(Long typeId);
 
     /**
-     * Í¨¹ıµêÆÌºÍÉÌÆ·ÀàĞÍ»ñÈ¡ÉÌÆ·
-     * @param shopId µêÆÌid
-     * @param typeId ÀàĞÍid£¬Îª-1±íÊ¾Ö±½Ó»ñÈ¡ËùÓĞµÄµêÆÌÀïÃæµÄËùÓĞÉÌÆ·
+     * é€šè¿‡åº—é“ºå’Œå•†å“ç±»å‹è·å–å•†å“
+     * @param shopId åº—é“ºid
+     * @param typeId ç±»å‹idï¼Œä¸º-1è¡¨ç¤ºç›´æ¥è·å–æ‰€æœ‰çš„åº—é“ºé‡Œé¢çš„æ‰€æœ‰å•†å“
      * @return
      */
     List<Commodity> getCommodityByShopAndType(Long shopId,Long typeId);
