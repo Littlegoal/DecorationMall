@@ -39,7 +39,7 @@ public class CommodityController {
      * 获取未删除的commodity
      * @return
      */
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/list",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String list(){
 

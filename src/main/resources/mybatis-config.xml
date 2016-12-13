@@ -13,6 +13,7 @@
            <typeAlias alias="Customer" type="com.jzh.model.Customer"/>
            <typeAlias alias="Business" type="com.jzh.model.Business"/>
            <typeAlias alias="Commodity" type="com.jzh.model.Commodity"/>
+           <typeAlias alias="Worker" type="com.jzh.model.Worker"/>
        </typeAliases>
 
 </configuration>
