@@ -39,7 +39,7 @@
         update
         commodity_type_level_three
         set
-        level_one_name=#{typeLevelThreeName},
+        level_three_name=#{typeLevelThreeName},
         level_two_id=#{typeLevelTwoId},
         is_deleted=#{isDeleted},
         update_time=now()
