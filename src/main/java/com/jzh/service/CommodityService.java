@@ -11,7 +11,7 @@ import java.util.List;
 public interface CommodityService extends GenericService<Commodity,Long>{
 
     /**
-     * ²éÑ¯ËùÓĞ¶ÔÏó
+     * æŸ¥è¯¢æ‰€æœ‰å¯¹è±¡
      *
      * @return
      */
@@ -19,7 +19,7 @@ public interface CommodityService extends GenericService<Commodity,Long>{
     List<Commodity> listAll();
 
     /**
-     * »ñÈ¡µ¥ÌõÊı¾İ
+     * è·å–å•æ¡æ•°æ®
      *
      * @param id
      * @return
@@ -28,7 +28,7 @@ public interface CommodityService extends GenericService<Commodity,Long>{
     Commodity get(final Long id);
 
     /**
-     * ²åÈëÊı¾İ
+     * æ’å…¥æ•°æ®
      *
      * @param commodity
      * @return
@@ -37,7 +37,7 @@ public interface CommodityService extends GenericService<Commodity,Long>{
     int insert(Commodity commodity);
 
     /**
-     * ¸üĞÂÊı¾İ
+     * æ›´æ–°æ•°æ®
      *
      * @param commodity
      * @return
@@ -46,7 +46,7 @@ public interface CommodityService extends GenericService<Commodity,Long>{
     int update(Commodity commodity);
 
     /**
-     * É¾³ıÊı¾İ
+     * åˆ é™¤æ•°æ®
      * @param id
      * @return
      */

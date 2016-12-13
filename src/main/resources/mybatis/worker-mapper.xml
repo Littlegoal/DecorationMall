@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzh.dao.WorkerDao">
+
+    <!-- CommodityTypeLevelOne集合申明 -->
+    <resultMap id="workerMap" type="Worker">
+        <id property="workerId" column="worker_id"/>
+        <result property="workerTypeId" column="worker_type_id"/>
+        <result property="workerName" column="worker_name"/>
+        <result property="contact" column="contact"/>
+        <result property="serviceArea" column="service_area"/>
+        <result property="introduction" column="introduction"/>
+        <result property="score" column="score"/>
+        <result property="pageview" column="pageview"/>
+        <result property="workAmount" column="work_amount"/>
+        <result property="commentAmount" column="comment_amount"/>
+        <result property="orderAmount" column="order_amount"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <!--把需要查询的字段写成公用列-->
+    <sql id="base_column">
+        worker_type_id,worker_name,contact,service_area,introduction,is_deleted,
+        score,pageview,work_amount,comment_amount,order_amount,update_time
+    </sql>
+
+    <!-- 搜素所有未逻辑删除的Worker-->
+    <select id="listAll" resultMap="workerMap">
+        select
+        <include refid="base_column" />
+        from
+        worker
+    </select>
+
+    <!-- 新增Worker -->
+    <insert id="insert" parameterType="Worker">
+        insert into
+        worker (worker_type_id,worker_name,contact,service_area,introduction,
+        score,pageview,work_amount,comment_amount,order_amount,is_deleted,update_time)
+        values
+        (
+        #{workerTypeId},#{workerName},#{contact},#{serviceArea},#{introduction},
+        #{score},#{pageview},#{workAmount},#{commentAmount},#{orderAmount},
+        #{isDeleted},now()
+        )
+    </insert>
+
+    <!-- 更新Worker -->
+    <update id="update"  parameterType="Worker">
+        update
+        worker
+        set
+        worker_type_id=#{workerTypeId},
+        worker_name=#{workerName},
+        contact=#{contact},
+        service_area=#{serviceArea},
+        introduction=#{introduction},
+        score=#{score},
+        pageview=#{pageview},
+        work_amount=#{workAmount},
+        comment_amount=#{commentAmount},
+        order_amount=#{orderAmount},
+        is_deleted=#{isDeleted},
+        update_time=now()
+        where
+        worker_id=#{workerId}
+    </update>
+
+    <!-- 删除Worker -->
+    <delete id="delete" parameterType="Long">
+        update
+        worker
+        set
+        is_deleted=0,
+        update_time=now()
+        where
+        worker_id=#{workerId}
+    </delete>
+
+    <!-- 查询Worker -->
+    <select id="get" parameterType="Long" resultMap="workerMap">
+        select
+        <include refid="base_column" />
+        from
+        worker
+        where
+        worker_id=#{workerId}
+    </select>
+
+</mapper>

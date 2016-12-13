@@ -258,3 +258,60 @@ CREATE TABLE `customer` (
 -- ----------------------------
 INSERT INTO `customer` VALUES ('1', 'customer_1', '123456', '1', '2016-12-05 12:21:46');
 INSERT INTO `customer` VALUES ('2', 'customer_2', '123456', '1', '2016-12-05 12:54:59');
+
+
+-- ----------------------------
+-- Table structure for work
+-- ----------------------------
+DROP TABLE IF EXISTS `work`;
+CREATE TABLE `work` (
+  `work_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '装修案例id',
+  `worker_id` bigint(20) unsigned NOT NULL COMMENT '工人id',
+  `name` varchar(100) NOT NULL COMMENT '样例名称',
+  `premises` varchar(100) NOT NULL COMMENT '所属楼盘',
+  `area` varchar(40) NOT NULL COMMENT '面积',
+  `introduction` varchar(400) NOT NULL COMMENT '样例简介',
+  `img_principal` text NOT NULL COMMENT '主图片',
+  `img_detail` text NOT NULL COMMENT '细节图片',
+  `interest_amount` bigint(10) unsigned NOT NULL COMMENT '用户感兴趣数',
+  `is_deleted` int(1) NOT NULL COMMENT '删除标记位，未删除为1，已删除为0',
+  `update_time` datetime NOT NULL COMMENT '最后更新时间',
+  PRIMARY KEY (`work_id`),
+  KEY `worker_id_1` (`worker_id`),
+  CONSTRAINT `worker_id_1` FOREIGN KEY (`worker_id`) REFERENCES `worker` (`worker_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='装修案例表';
+
+-- ----------------------------
+-- Records of work
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for worker
+-- ----------------------------
+DROP TABLE IF EXISTS `worker`;
+CREATE TABLE `worker` (
+  `worker_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '工人id',
+  `worker_type_id` bigint(20) unsigned NOT NULL COMMENT '工种',
+  `worker_name` varchar(20) NOT NULL COMMENT '工人姓名',
+  `contact` varchar(100) NOT NULL COMMENT '联系方式',
+  `service_area` varchar(100) NOT NULL COMMENT '服务区域',
+  `introduction` varchar(400) NOT NULL COMMENT '简介',
+  `score` double(3,2) unsigned NOT NULL COMMENT '评分数',
+  `pageview` bigint(10) unsigned NOT NULL COMMENT '浏览量',
+  `work_amount` bigint(10) NOT NULL COMMENT '装修案例数量',
+  `comment_amount` bigint(10) unsigned NOT NULL COMMENT '评论数量',
+  `order_amount` bigint(10) unsigned NOT NULL COMMENT '历史预约次数',
+  `is_deleted` int(1) NOT NULL COMMENT '删除标记位，未删除为1，已删除为0',
+  `update_time` datetime NOT NULL COMMENT '最后更新时间',
+  PRIMARY KEY (`worker_id`),
+  KEY `work_type_id_1` (`worker_type_id`),
+  CONSTRAINT `work_type_id_1` FOREIGN KEY (`worker_type_id`) REFERENCES `commodity_type_level_two` (`level_two_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='工人表';
+
+-- ----------------------------
+-- Records of worker
+-- ----------------------------
+INSERT INTO `worker` VALUES ('1', '3', '张师傅', '18812345678', '全市', '简介', '5.22', '22', '10', '10', '10', '1', '2016-12-13 10:55:24');
+INSERT INTO `worker` VALUES ('2', '3', '1号工人', '18800000001', '全市', '简介', '1.10', '1', '1', '1', '1', '1', '2016-12-13 12:06:18');
+INSERT INTO `worker` VALUES ('3', '3', '3号工人', '18800000003', '全市', '改简介', '3.10', '3', '3', '3', '3', '1', '2016-12-13 13:07:49');
+INSERT INTO `worker` VALUES ('4', '3', '3号工人', '18800000003', '全市', '简介', '3.10', '3', '3', '3', '3', '0', '2016-12-13 12:08:05');
