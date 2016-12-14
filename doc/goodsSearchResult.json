@@ -1,0 +1,40 @@
+﻿{
+                "keyword" : "塔塔米家具",
+                "category" : "shop",
+                "count" : 5,
+                "items" : [
+                    {
+                        "id": 12345,
+                        "name" : "店家名字店家名字",
+                        "goodsCount" : 233,
+                        "img": "",
+                        "sale":"限时促销",
+                        "price":"99999"
+                    },
+                    {
+                        "id": 12345,
+                        "name" : "店家名字店家名字",
+                        "goodsCount" : 233,
+                        "img": "",
+                        "sale":"火爆商品",
+                        "price":"8888"
+                    },
+                    {
+                        "id": 12345,
+                        "name" : "店家名字店家名字",
+                        "goodsCount" : 233,
+                        "img": "",
+                        "sale":"限时促销",
+                        "price":"99999"
+                    },
+                    {
+                        "id": 12345,
+                        "name" : "店家名字店家名字",
+                        "goodsCount" : 233,
+                        "img": "",
+                        "sale":"限时促销",
+                        "price":"99999"
+                    }
+                ],
+                "hasMore" : false
+}

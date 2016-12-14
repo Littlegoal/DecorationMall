@@ -1,0 +1,48 @@
+﻿{
+                "workers" :[
+                    {
+                       "keyword" :"瓦工",
+                       "items":[
+                            {
+                                "id":12334,
+                                "img":"",
+                                "name":"",
+                                "project":""
+                            }
+                       ] 
+                    },
+                    {
+                       "keyword" :"木工",
+                       "items":[
+                            {
+                                "id":12334,
+                                "img":"",
+                                "name":"",
+                                "project":""
+                            }
+                       ] 
+                    },
+                    {
+                       "keyword" :"水工",
+                       "items":[
+                            {
+                                "id":12334,
+                                "img":"",
+                                "name":"",
+                                "project":""
+                            }
+                       ] 
+                    },
+                    {
+                       "keyword" :"电工",
+                       "items":[
+                            {
+                                "id":12334,
+                                "img":"",
+                                "name":"",
+                                "project":""
+                            }
+                       ] 
+                    }
+                ]     
+            }

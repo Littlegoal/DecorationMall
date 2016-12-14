@@ -1,0 +1,26 @@
+﻿{
+                "keyword" : "朝阳 家具店",
+                "category" : "shop",
+                "count" : 5,
+                "items" : [
+                    {
+                        "id": 12345,
+                        "name" : "店家名字店家名字",
+                        "address" : "12345",
+                        "contact": "021-87253232",
+                        "goods" : ["家具", "床品", "卧室用品"],
+                        "goodsCount" : 233,
+                        "img": ""
+                    },
+                    {
+                        "id": 12345,
+                        "name" : "店家名字店家名字",
+                        "address" : "12345",
+                        "contact": "021-87253232",
+                        "goods" : ["家具", "床品", "卧室用品"],
+                        "goodsCount" : 233,
+                        "img": ""
+                    }
+                ],
+                "hasMore" : false
+            }

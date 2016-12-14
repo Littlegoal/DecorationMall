@@ -21,7 +21,7 @@
 
     <!--把需要查询的字段写成公用列-->
     <sql id="base_column">
-        worker_type_id,worker_name,contact,service_area,introduction,is_deleted,
+        worker_id,worker_type_id,worker_name,contact,service_area,introduction,is_deleted,
         score,pageview,work_amount,comment_amount,order_amount,update_time
     </sql>
 

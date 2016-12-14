@@ -1,0 +1,39 @@
+﻿{
+                "id" : 1234,
+                "introduce" :{
+                    "name" : "李白",
+                    "keyword" : "木工",
+                    "city" : "承德市",
+                    "cases" :"6",
+                    "comments" :"181",
+                    "contact" :"188888888888",
+                    "introduction" :"是会计hash大卡司打开就会卡就回家肯定还是卡就合适的就撒开大家哈的"
+                },
+                "theHead" :{
+                    "img" :"",
+                    "accessAmount" :"1622",
+                    "appointment" : "1233"
+                },
+                "projects" :[
+                    {
+                        "img":"",
+                        "name":"啊健康哈斯的健康哈斯都快结婚",
+                        "tittle":"哈哈",
+                        "accessAmount" :"1622"
+                    }
+
+                ],
+                "comments" :{
+                    "counts" :"181",
+                    "score" : "4.9",
+                    "items" : [
+                        {
+                            "name" :"1231421412",
+                            "img":"",
+                            "score":"4.0",
+                            "comment":"健康哈斯科技等哈看上的",
+                            "date":"2016-12-00"
+                        }
+                    ]
+                }
+            }

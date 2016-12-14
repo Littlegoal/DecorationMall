@@ -24,4 +24,5 @@ public interface WorkerDao extends GenericDao<Worker,Long> {
 
     @Override
     int delete(final Long id);
+
 }

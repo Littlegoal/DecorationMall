@@ -1,10 +1,14 @@
 package com.jzh.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.jzh.dao.WorkerDao;
 import com.jzh.model.Worker;
 import com.jzh.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Yunpeng Ma
@@ -20,5 +24,14 @@ public class WorkerServiceImpl extends GenericServiceImpl<Worker,Long> implement
     public WorkerServiceImpl(WorkerDao workerDao) {
         super(workerDao);
         this.workerDao = workerDao;
+    }
+
+    @Override
+    public PageInfo searchPage(int pageNum, int pageSize) {
+
+        PageHelper.startPage(pageNum,pageSize);
+        List<Worker> list = workerDao.listAll();
+        PageInfo page = new PageInfo(list);
+        return page;
     }
 }

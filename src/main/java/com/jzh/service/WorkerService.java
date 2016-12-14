@@ -1,5 +1,6 @@
 package com.jzh.service;
 
+import com.github.pagehelper.PageInfo;
 import com.jzh.model.Worker;
 
 import java.util.List;
@@ -24,4 +25,6 @@ public interface WorkerService extends GenericService<Worker,Long> {
 
     @Override
     int delete(final Long id);
+
+    PageInfo searchPage(int pageNum, int pageSize);
 }

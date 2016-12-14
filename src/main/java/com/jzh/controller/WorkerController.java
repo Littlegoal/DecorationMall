@@ -1,5 +1,6 @@
 package com.jzh.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jzh.model.Worker;
@@ -68,4 +69,15 @@ public class WorkerController {
         workerService.delete(id);
     }
 
+    /**
+     * 分页
+     */
+    @RequestMapping(value = "/page/{pageNum}/{pageSize}",method = RequestMethod.GET)
+    @ResponseBody
+    public String page(@PathVariable int pageNum, @PathVariable int pageSize) {
+
+        PageInfo page = workerService.searchPage(pageNum,pageSize);
+        Gson gson = new Gson();
+        return gson.toJson(page.getList());
+    }
 }
