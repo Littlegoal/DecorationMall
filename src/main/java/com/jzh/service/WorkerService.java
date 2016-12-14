@@ -25,6 +25,4 @@ public interface WorkerService extends GenericService<Worker,Long> {
 
     @Override
     int delete(final Long id);
-
-    PageInfo searchPage(int pageNum, int pageSize);
 }

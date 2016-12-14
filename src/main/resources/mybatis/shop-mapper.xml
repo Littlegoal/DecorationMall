@@ -46,7 +46,6 @@
         shop
         set
         shop_name=#{shopName},
-        shop_name=#{shopName},
         contact_information=#{contact},
         img_shop=#{displayImage},
         qr_code=#{qrCode},
@@ -66,7 +65,7 @@
         is_deleted=0,
         update_time=now()
         where
-        id=#{shop_id}
+        shop_ip=#{id}
     </delete>
 
     <!-- 查询Shop -->

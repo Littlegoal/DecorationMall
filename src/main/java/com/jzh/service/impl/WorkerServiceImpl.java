@@ -25,13 +25,4 @@ public class WorkerServiceImpl extends GenericServiceImpl<Worker,Long> implement
         super(workerDao);
         this.workerDao = workerDao;
     }
-
-    @Override
-    public PageInfo searchPage(int pageNum, int pageSize) {
-
-        PageHelper.startPage(pageNum,pageSize);
-        List<Worker> list = workerDao.listAll();
-        PageInfo page = new PageInfo(list);
-        return page;
-    }
 }

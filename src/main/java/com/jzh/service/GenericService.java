@@ -1,5 +1,7 @@
 package com.jzh.service;
 
+import com.github.pagehelper.PageInfo;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -47,4 +49,11 @@ public interface GenericService <T, PK extends Serializable> {
      */
     int delete(final PK id);
 
+    /**
+     * 查询分页
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    PageInfo<T> searchForPage(int pageNum, int pageSize);
 }

@@ -76,8 +76,9 @@ public class WorkerController {
     @ResponseBody
     public String page(@PathVariable int pageNum, @PathVariable int pageSize) {
 
-        PageInfo page = workerService.searchPage(pageNum,pageSize);
+        PageInfo page = workerService.searchForPage(pageNum,pageSize);
         Gson gson = new Gson();
+        System.out.println(page.getTotal());
         return gson.toJson(page.getList());
     }
 }

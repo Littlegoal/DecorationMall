@@ -1,5 +1,7 @@
 package com.jzh.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.jzh.service.GenericService;
 import com.jzh.dao.GenericDao;
 import org.springframework.stereotype.Service;
@@ -47,5 +49,13 @@ public class GenericServiceImpl<T, PK extends Serializable> implements GenericSe
     @Override
     public int delete(PK id) {
         return dao.delete(id);
+    }
+
+    @Override
+    public PageInfo<T> searchForPage(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<T> list = dao.listAll();
+        PageInfo<T> pageInfo = new PageInfo<T>(list);
+        return pageInfo;
     }
 }

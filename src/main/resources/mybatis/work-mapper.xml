@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzh.dao.WorkDao">
+
+    <!-- Work集合申明 -->
+    <resultMap id="workMap" type="Work">
+        <id property="workId" column="work_id"/>
+        <result property="workerId" column="worker_id"/>
+        <result property="name" column="name"/>
+        <result property="premises" column="premises"/>
+        <result property="area" column="area"/>
+        <result property="introduction" column="introduction"/>
+        <result property="imgPrincipal" column="img_principal"/>
+        <result property="imgDetail" column="img_detail"/>
+        <result property="interestAmount" column="interest_amount"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <!--把需要查询的字段写成公用列-->
+    <sql id="base_column">
+        work_id,worker_id,name,premises,area,introduction,
+        img_principal,img_detail,interest_amount,is_deleted,update_time
+    </sql>
+
+    <!-- 搜素所有未逻辑删除的Work-->
+    <select id="listAll" resultMap="workMap">
+        SELECT
+        <include refid="base_column" />
+        FROM
+        work
+    </select>
+
+    <!-- 查询Work -->
+    <select id="get" parameterType="Long" resultMap="workMap">
+        SELECT
+        <include refid="base_column" />
+        FROM
+        work
+        WHERE
+        work_id=#{workId}
+    </select>
+
+    <!-- 删除Work -->
+    <delete id="delete" parameterType="Long">
+        UPDATE
+        work
+        SET
+        is_deleted=0,
+        update_time=now()
+        WHERE
+        work_id=#{workId}
+    </delete>
+
+    <!-- 新增Work -->
+    <insert id="insert" parameterType="Work">
+        INSERT INTO
+        work (worker_id,name,premises,area,introduction,
+        img_principal,img_detail,interest_amount,is_deleted,update_time)
+        VALUES
+        (
+        #{workerId},#{name},#{premises},#{area},#{introduction},
+        #{imgPrincipal},#{imgDetail},#{interestAmount},#{isDeleted},now()
+        )
+
+    </insert>
+
+    <!-- 更新Worker -->
+    <update id="update" parameterType="Work">
+        UPDATE
+        work
+        SET
+        worker_id=#{workerId},
+        name=#{name},
+        premises=#{premises},
+        area=#{area},
+        introduction=#{introduction},
+        img_principal=#{imgPrincipal},
+        img_detail=#{imgDetail},
+        interest_amount=#{interestAmount},
+        is_deleted=#{isDeleted},
+        update_time=now()
+        WHERE
+        work_id=#{workId}
+    </update>
+
+</mapper>
