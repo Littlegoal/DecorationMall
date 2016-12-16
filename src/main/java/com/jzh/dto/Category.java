@@ -1,40 +1,40 @@
 package com.jzh.dto;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
- * 某一类图片url集合——商品详情页面
+ * 商品类别——店铺详情页面、商品详情页面
  *
  * @author Yunpeng Ma
  * @version 1.0
  */
-public class Img implements Serializable {
+public class Category implements Serializable {
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 图片类别名
+	 * 商品类名
 	 */
 	private String name;
 
 	/**
-	 * 图片url集合
+	 * 商品类别id
 	 */
-	private List<String> imgs;
+	private Long id;
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<String> getImgs() {
-		return imgs;
+	public Long getId() {
+		return id;
 	}
-	public void setImgs(List<String> imgs) {
-		this.imgs = imgs;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

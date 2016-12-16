@@ -12,9 +12,9 @@
         <result property="introduction" column="introduction"/>
         <result property="score" column="score"/>
         <result property="pageview" column="pageview"/>
-        <result property="workAmount" column="work_amount"/>
-        <result property="commentAmount" column="comment_amount"/>
-        <result property="orderAmount" column="order_amount"/>
+        <result property="workCount" column="work_cmount"/>
+        <result property="commentCount" column="comment_cmount"/>
+        <result property="orderCount" column="order_cmount"/>
         <result property="isDeleted" column="is_deleted"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
@@ -22,7 +22,7 @@
     <!--把需要查询的字段写成公用列-->
     <sql id="base_column">
         worker_id,worker_type_id,worker_name,contact,service_area,introduction,is_deleted,
-        score,pageview,work_amount,comment_amount,order_amount,update_time
+        score,pageview,work_count,comment_count,order_count,update_time
     </sql>
 
     <!-- 搜素所有未逻辑删除的Worker-->
@@ -37,11 +37,11 @@
     <insert id="insert" parameterType="Worker">
         insert into
         worker (worker_type_id,worker_name,contact,service_area,introduction,
-        score,pageview,work_amount,comment_amount,order_amount,is_deleted,update_time)
+        score,pageview,work_count,comment_count,order_count,is_deleted,update_time)
         values
         (
         #{workerTypeId},#{workerName},#{contact},#{serviceArea},#{introduction},
-        #{score},#{pageview},#{workAmount},#{commentAmount},#{orderAmount},
+        #{score},#{pageview},#{workCount},#{commentCount},#{orderCount},
         #{isDeleted},now()
         )
     </insert>
@@ -58,9 +58,9 @@
         introduction=#{introduction},
         score=#{score},
         pageview=#{pageview},
-        work_amount=#{workAmount},
-        comment_amount=#{commentAmount},
-        order_amount=#{orderAmount},
+        work_cmount=#{workCount},
+        comment_cmount=#{commentCount},
+        order_cmount=#{orderCount},
         is_deleted=#{isDeleted},
         update_time=now()
         where

@@ -16,7 +16,9 @@
         <result property="imgDetail" column="img_detail"/>
         <result property="imgMaterial" column="img_material"/>
         <result property="imgAdvantage" column="img_advantage"/>
-        <result property="introduce" column="commodity_introduce"/>
+        <result property="introduction" column="commodity_introduction"/>
+        <result property="isSale" column="is_sale"/>
+        <result property="isRecommend" column="is_recommend"/>
         <result property="isDeleted" column="is_deleted"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
@@ -24,7 +26,8 @@
     <!--把需要查询的字段写成公用列-->
     <sql id="base_column">
         commodity_id,commodity_type_id,commodity_name,price,shop_id,img_principal,img_drawing,img_shot,
-        img_size,img_detail,img_material,img_advantage,commodity_introduce,is_deleted,update_time
+        img_size,img_detail,img_material,img_advantage,commodity_introduction,is_sale,
+        is_recommend,is_deleted,update_time
     </sql>
 
     <!-- 搜素所有未逻辑删除的Commodity-->
@@ -40,12 +43,14 @@
         commodity
         (
           commodity_type_id,commodity_name,price,shop_id,img_principal,img_drawing,img_shot,
-          img_size,img_detail,img_material,img_advantage,commodity_introduce,is_deleted,update_time
+          img_size,img_detail,img_material,img_advantage,commodity_introduction,is_sale,
+          is_recommend,is_deleted,update_time
         )
         values
         (
             #{typeId},#{name},#{price},#{shopId},#{imgPrincipal},#{imgDrawing},#{imgShot},#{imgSize},
-            #{imgDetail},#{imgMaterial},#{imgAdvantage},#{introduce},0,NOW()
+            #{imgDetail},#{imgMaterial},#{imgAdvantage},#{introduction},#{isSale},
+            #{isRecommend},1,NOW()
         )
     </insert>
 
@@ -64,7 +69,9 @@
             img_detail=#{imgDetail},
             img_material=#{imgMaterial},
             img_advantage=#{imgAdvantage},
-            commodity_introduce=#{introduce},
+            commodity_introduction=#{introduction},
+            is_sale=#{isSale},
+            is_recommend=#{isRecommend},
             is_deleted=#{isDeleted},
             update_time=NOW()
         where commodity_id=#{id}

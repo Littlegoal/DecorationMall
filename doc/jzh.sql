@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `shop`;
 CREATE TABLE `shop` (
   `shop_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '店铺id',
   `shop_name` varchar(100) NOT NULL COMMENT '店铺名称',
-  `shop_introduce` text COMMENT '店铺介绍',
+  `shop_introduction` text COMMENT '店铺介绍',
   `shop_address` text COMMENT '店铺地址',
   `contact_information` varchar(100) DEFAULT NULL COMMENT '联系方式',
   `img_shop` text COMMENT '店铺图片',
@@ -132,14 +132,16 @@ CREATE TABLE `commodity` (
   `price` decimal(10,2) NOT NULL COMMENT '商品价格',
   `shop_id` bigint(20) unsigned NOT NULL COMMENT '店铺id',
   `img_principal` text NOT NULL COMMENT '主图片',
-  `img_drawing` text COMMENT '效果图',
-  `img_shot` text COMMENT '实拍图',
-  `img_size` text COMMENT '尺寸图',
-  `img_detail` text COMMENT '细节图',
-  `img_material` text COMMENT '材质图',
-  `img_advantage` text COMMENT '优势图',
-  `commodity_introduce` text NOT NULL COMMENT '商品介绍',
-  `is_deleted` int(11) NOT NULL COMMENT '删除标记位，未删除为1，已删除为0',
+  `img_drawing` text NOT NULL COMMENT '效果图',
+  `img_shot` text NOT NULL COMMENT '实拍图',
+  `img_size` text NOT NULL COMMENT '尺寸图',
+  `img_detail` text NOT NULL COMMENT '细节图',
+  `img_material` text NOT NULL COMMENT '材质图',
+  `img_advantage` text NOT NULL COMMENT '优势图',
+  `commodity_introduction` text NOT NULL COMMENT '商品介绍',
+  `is_sale` int(1) NOT NULL COMMENT '促销标记位，未促销为1，已促销为0',
+  `is_recommend` int(1) NOT NULL COMMENT '首页推荐标记位，未推荐为1，已推荐为0',
+  `is_deleted` int(1) NOT NULL COMMENT '删除标记位，未删除为1，已删除为0',
   `update_time` datetime NOT NULL COMMENT '最后更新时间',
   PRIMARY KEY (`commodity_id`),
   KEY `commodity_type_id_2` (`commodity_type_id`),
@@ -151,10 +153,10 @@ CREATE TABLE `commodity` (
 -- ----------------------------
 -- Records of commodity
 -- ----------------------------
-INSERT INTO `commodity` VALUES ('1', '1', '4号沙发', '100.00', '1', 'Principal_1;Principal_2;', 'Drawing_1;Drawing_2;Drawing_3;Drawing_4;', 'Shot_1;Shot_2;', 'Size_1;Size_2;Size_3;', 'Detail_1;', 'Material_1;Material_2;Material_3;', 'Advantage_1;Advantage_2;', '4号沙发介绍', '1', '2016-12-08 12:52:02');
-INSERT INTO `commodity` VALUES ('2', '1', '2号沙发', '200.00', '1', 'Principal_1;Principal_2;', 'Drawing_1;Drawing_2;Drawing_3;Drawing_4;', 'Shot_1;Shot_2;', 'Size_1;Size_2;Size_3;', 'Detail_1;', 'Material_1;Material_2;Material_3;', 'Advantage_1;Advantage_2;', '2号沙发介绍', '0', '2016-12-07 16:32:18');
-INSERT INTO `commodity` VALUES ('3', '1', '1号沙发', '200.00', '1', 'Principal_1;Principal_2;', 'Drawing_1;Drawing_2;Drawing_3;Drawing_4;', 'Shot_1;Shot_2;', 'Size_1;Size_2;Size_3;', 'Detail_1;', 'Material_1;Material_2;Material_3;', 'Advantage_1;Advantage_2;', '1号沙发介绍', '0', '2016-12-07 16:32:22');
-INSERT INTO `commodity` VALUES ('4', '1', '2号沙发', '200.00', '1', 'Principal_1;Principal_2;', 'Drawing_1;Drawing_2;Drawing_3;Drawing_4;', 'Shot_1;Shot_2;', 'Size_1;Size_2;Size_3;', 'Detail_1;', 'Material_1;Material_2;Material_3;', 'Advantage_1;Advantage_2;', '2号沙发介绍', '0', '2016-12-07 16:32:22');
+INSERT INTO `commodity` VALUES ('1', '1', '4号沙发', '100.00', '1', 'Principal_1;Principal_2;', 'Drawing_1;Drawing_2;Drawing_3;Drawing_4;', 'Shot_1;Shot_2;', 'Size_1;Size_2;Size_3;', 'Detail_1;', 'Material_1;Material_2;Material_3;', 'Advantage_1;Advantage_2;', '4号沙发介绍', '1', '1', '1', '2016-12-08 12:52:02');
+INSERT INTO `commodity` VALUES ('2', '1', '2号沙发', '200.00', '1', 'Principal_1;Principal_2;', 'Drawing_1;Drawing_2;Drawing_3;Drawing_4;', 'Shot_1;Shot_2;', 'Size_1;Size_2;Size_3;', 'Detail_1;', 'Material_1;Material_2;Material_3;', 'Advantage_1;Advantage_2;', '2号沙发介绍', '1', '1', '1', '2016-12-07 16:32:18');
+INSERT INTO `commodity` VALUES ('3', '1', '1号沙发', '200.00', '1', 'Principal_1;Principal_2;', 'Drawing_1;Drawing_2;Drawing_3;Drawing_4;', 'Shot_1;Shot_2;', 'Size_1;Size_2;Size_3;', 'Detail_1;', 'Material_1;Material_2;Material_3;', 'Advantage_1;Advantage_2;', '1号沙发介绍', '1', '1', '1', '2016-12-07 16:32:22');
+INSERT INTO `commodity` VALUES ('4', '1', '2号沙发', '200.00', '1', 'Principal_1;Principal_2;', 'Drawing_1;Drawing_2;Drawing_3;Drawing_4;', 'Shot_1;Shot_2;', 'Size_1;Size_2;Size_3;', 'Detail_1;', 'Material_1;Material_2;Material_3;', 'Advantage_1;Advantage_2;', '2号沙发介绍', '1', '1', '1', '2016-12-07 16:32:22');
 
 -- ----------------------------
 -- Table structure for commodity_homepage_recommend
@@ -162,25 +164,29 @@ INSERT INTO `commodity` VALUES ('4', '1', '2号沙发', '200.00', '1', 'Principa
 DROP TABLE IF EXISTS `commodity_homepage_recommend`;
 CREATE TABLE `commodity_homepage_recommend` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '家装首页推荐商品项id',
-  `type_level_two_id` bigint(20) DEFAULT NULL COMMENT '商品二级分类id',
-  `shop_id` bigint(20) unsigned DEFAULT NULL COMMENT '店铺id',
-  `shop_name` varchar(100) DEFAULT NULL COMMENT '店铺名称',
-  `commodity_id` bigint(20) unsigned DEFAULT NULL COMMENT '商品id',
-  `commodity_name` text COMMENT '商品名称',
-  `commodity_price` decimal(10,2) DEFAULT NULL COMMENT '商品价格',
-  `commodity_img` text COMMENT '商品图片',
+  `type_level_two_id` bigint(20) unsigned NOT NULL COMMENT '商品二级分类id',
+  `shop_id` bigint(20) unsigned NOT NULL COMMENT '店铺id',
+  `shop_name` varchar(100) NOT NULL COMMENT '店铺名称',
+  `commodity_id` bigint(20) unsigned NOT NULL COMMENT '商品id',
+  `commodity_name` text NOT NULL COMMENT '商品名称',
+  `commodity_price` decimal(10,2) NOT NULL COMMENT '商品价格',
+  `commodity_img` text NOT NULL COMMENT '商品图片',
+  `is_sale` int(1) NOT NULL COMMENT '促销标记位，未促销为1，已促销为0',
   `is_deleted` int(1) NOT NULL COMMENT '删除标记位,未删除为1,已删除为0',
   `update_time` datetime NOT NULL COMMENT '最后更新时间',
   PRIMARY KEY (`id`),
   KEY `shop_id_3` (`shop_id`),
   KEY `commodity_id_3` (`commodity_id`),
+  KEY `type_id_1` (`type_level_two_id`),
   CONSTRAINT `commodity_id_3` FOREIGN KEY (`commodity_id`) REFERENCES `commodity` (`commodity_id`),
-  CONSTRAINT `shop_id_3` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shop_id`)
+  CONSTRAINT `shop_id_3` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shop_id`),
+  CONSTRAINT `type_id_1` FOREIGN KEY (`type_level_two_id`) REFERENCES `commodity_type_level_two` (`level_two_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='家装首页商品推荐表';
 
 -- ----------------------------
 -- Records of commodity_homepage_recommend
 -- ----------------------------
+
 
 -- ----------------------------
 -- Table structure for commodity_attribute
@@ -259,32 +265,6 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` VALUES ('1', 'customer_1', '123456', '1', '2016-12-05 12:21:46');
 INSERT INTO `customer` VALUES ('2', 'customer_2', '123456', '1', '2016-12-05 12:54:59');
 
-
--- ----------------------------
--- Table structure for work
--- ----------------------------
-DROP TABLE IF EXISTS `work`;
-CREATE TABLE `work` (
-  `work_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '装修案例id',
-  `worker_id` bigint(20) unsigned NOT NULL COMMENT '工人id',
-  `name` varchar(100) NOT NULL COMMENT '样例名称',
-  `premises` varchar(100) NOT NULL COMMENT '所属楼盘',
-  `area` varchar(40) NOT NULL COMMENT '面积',
-  `introduction` varchar(400) NOT NULL COMMENT '样例简介',
-  `img_principal` text NOT NULL COMMENT '主图片',
-  `img_detail` text NOT NULL COMMENT '细节图片',
-  `interest_amount` bigint(10) unsigned NOT NULL COMMENT '用户感兴趣数',
-  `is_deleted` int(1) NOT NULL COMMENT '删除标记位，未删除为1，已删除为0',
-  `update_time` datetime NOT NULL COMMENT '最后更新时间',
-  PRIMARY KEY (`work_id`),
-  KEY `worker_id_1` (`worker_id`),
-  CONSTRAINT `worker_id_1` FOREIGN KEY (`worker_id`) REFERENCES `worker` (`worker_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='装修案例表';
-
--- ----------------------------
--- Records of work
--- ----------------------------
-
 -- ----------------------------
 -- Table structure for worker
 -- ----------------------------
@@ -298,15 +278,15 @@ CREATE TABLE `worker` (
   `introduction` varchar(400) NOT NULL COMMENT '简介',
   `score` double(3,2) unsigned NOT NULL COMMENT '评分数',
   `pageview` bigint(10) unsigned NOT NULL COMMENT '浏览量',
-  `work_amount` bigint(10) NOT NULL COMMENT '装修案例数量',
-  `comment_amount` bigint(10) unsigned NOT NULL COMMENT '评论数量',
-  `order_amount` bigint(10) unsigned NOT NULL COMMENT '历史预约次数',
+  `work_count` bigint(10) NOT NULL COMMENT '装修案例数量',
+  `comment_count` bigint(10) unsigned NOT NULL COMMENT '评论数量',
+  `order_count` bigint(10) unsigned NOT NULL COMMENT '历史预约次数',
   `is_deleted` int(1) NOT NULL COMMENT '删除标记位，未删除为1，已删除为0',
   `update_time` datetime NOT NULL COMMENT '最后更新时间',
   PRIMARY KEY (`worker_id`),
   KEY `work_type_id_1` (`worker_type_id`),
   CONSTRAINT `work_type_id_1` FOREIGN KEY (`worker_type_id`) REFERENCES `commodity_type_level_two` (`level_two_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='工人表';
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='工人表';
 
 -- ----------------------------
 -- Records of worker
@@ -341,6 +321,32 @@ INSERT INTO `worker` VALUES ('27', '3', '5号工人', '18800000005', '全市', '
 INSERT INTO `worker` VALUES ('28', '3', '6号工人', '18800000006', '全市', '简介', '6.10', '6', '6', '6', '6', '1', '2016-12-13 16:56:41');
 INSERT INTO `worker` VALUES ('29', '3', '7号工人', '18800000007', '全市', '简介', '7.10', '7', '7', '7', '7', '1', '2016-12-13 16:56:41');
 INSERT INTO `worker` VALUES ('30', '3', '8号工人', '18800000008', '全市', '简介', '8.10', '8', '8', '8', '8', '1', '2016-12-13 16:56:41');
+
+-- ----------------------------
+-- Table structure for work
+-- ----------------------------
+DROP TABLE IF EXISTS `work`;
+CREATE TABLE `work` (
+  `work_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '装修案例id',
+  `worker_id` bigint(20) unsigned NOT NULL COMMENT '工人id',
+  `name` varchar(100) NOT NULL COMMENT '样例名称',
+  `premises` varchar(100) NOT NULL COMMENT '所属楼盘',
+  `area` varchar(40) NOT NULL COMMENT '面积',
+  `introduction` varchar(400) NOT NULL COMMENT '样例简介',
+  `img_principal` text NOT NULL COMMENT '主图片',
+  `img_detail` text NOT NULL COMMENT '细节图片',
+  `interest_count` bigint(10) unsigned NOT NULL COMMENT '用户感兴趣数',
+  `is_recommend` int(1) NOT NULL COMMENT '首页推荐标记位，未推荐为1，已推荐为0',
+  `is_deleted` int(1) NOT NULL COMMENT '删除标记位，未删除为1，已删除为0',
+  `update_time` datetime NOT NULL COMMENT '最后更新时间',
+  PRIMARY KEY (`work_id`),
+  KEY `worker_id_1` (`worker_id`),
+  CONSTRAINT `worker_id_1` FOREIGN KEY (`worker_id`) REFERENCES `worker` (`worker_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='装修案例表';
+
+-- ----------------------------
+-- Records of work
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for worker_homepage_recommend

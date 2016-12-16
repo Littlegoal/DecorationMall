@@ -3,7 +3,7 @@ package com.jzh.dto;
 import java.io.Serializable;
 
 /**
- * 商品简介——店铺详情页面
+ * 商品简介——店铺详情页面、家具首页、家具搜索页面
  *
  * @author Yunpeng Ma
  * @version 1.0
@@ -22,7 +22,7 @@ public class Goods implements Serializable {
 	/**
 	 * 商品名称
 	 */
-	private String title;
+	private String name;
 
 	/**
 	 * 价格
@@ -30,34 +30,77 @@ public class Goods implements Serializable {
 	private Double price;
 
 	/**
-	 * 主图片url集合
+	 * 主图片url
 	 */
-	private String mainImg;
+	private String displayImage;
+
+	/**
+	 * 促销标记位
+	 */
+	private int sale;
+
+	/**
+	 * 店铺id
+	 */
+	private Long shopId;
+
+	/**
+	 * 店铺名字
+	 */
+	private String shopName;
+
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getTitle() {
-		return title;
+
+	public String getName() {
+		return name;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+
+	public void setName(String name) {
+		this.name = name;
 	}
+
 	public Double getPrice() {
 		return price;
 	}
+
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public String getMainImg() {
-		return mainImg;
-	}
-	public void setMainImg(String mainImg) {
-		this.mainImg = mainImg;
-	}
-	
-	
 
+	public String getDisplayImage() {
+		return displayImage;
+	}
+
+	public void setDisplayImage(String displayImage) {
+		this.displayImage = displayImage;
+	}
+
+	public int getSale() {
+		return sale;
+	}
+
+	public void setSale(int sale) {
+		this.sale = sale;
+	}
+
+	public Long getShopId() {
+		return shopId;
+	}
+
+	public void setShopId(Long shopId) {
+		this.shopId = shopId;
+	}
+
+	public String getShopName() {
+		return shopName;
+	}
+
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
+	}
 }

@@ -55,17 +55,17 @@ public class Worker implements Serializable {
     /**
      * 装修案例数量
      */
-    private Long workAmount;
+    private Long workCount;
 
     /**
      * 评论数
      */
-    private Long commentAmount;
+    private Long commentCount;
 
     /**
      * 历史预约次数
      */
-    private Long orderAmount;
+    private Long orderCount;
 
     /**
      * 删除标记位
@@ -99,14 +99,6 @@ public class Worker implements Serializable {
 
     public void setIsDeleted(int isDeleted) {
         this.isDeleted = isDeleted;
-    }
-
-    public Long getOrderAmount() {
-        return orderAmount;
-    }
-
-    public void setOrderAmount(Long orderAmount) {
-        this.orderAmount = orderAmount;
     }
 
     public Long getWorkerTypeId() {
@@ -165,19 +157,27 @@ public class Worker implements Serializable {
         this.pageview = pageview;
     }
 
-    public Long getWorkAmount() {
-        return workAmount;
+    public Long getWorkCount() {
+        return workCount;
     }
 
-    public void setWorkAmount(Long workAmount) {
-        this.workAmount = workAmount;
+    public void setWorkCount(Long workCount) {
+        this.workCount = workCount;
     }
 
-    public Long getCommentAmount() {
-        return commentAmount;
+    public Long getCommentCount() {
+        return commentCount;
     }
 
-    public void setCommentAmount(Long commentAmount) {
-        this.commentAmount = commentAmount;
+    public void setCommentCount(Long commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    public Long getOrderCount() {
+        return orderCount;
+    }
+
+    public void setOrderCount(Long orderCount) {
+        this.orderCount = orderCount;
     }
 }

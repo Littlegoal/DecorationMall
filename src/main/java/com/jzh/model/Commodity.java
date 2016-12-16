@@ -60,11 +60,23 @@ public class Commodity implements Serializable {
     /**
      * 商品介绍
      */
-    private String introduce;
+    private String introduction;
+
+    /**
+     * 促销标记位，未促销为1，已促销为0
+     */
+    private int isSale;
+
+    /**
+     * 首页推荐标记位，未推荐为1，已推荐为0
+     */
+    private int isRecommend;
+
     /**
      * 删除标记位，未删除为1，已删除为0
      */
     private int isDeleted;
+
     /**
      * 最后更新时间
      */
@@ -166,12 +178,12 @@ public class Commodity implements Serializable {
         this.imgAdvantage = imgAdvantage;
     }
 
-    public String getIntroduce() {
-        return introduce;
+    public String getIntroduction() {
+        return introduction;
     }
 
-    public void setIntroduce(String introduce) {
-        this.introduce = introduce;
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 
     public int getIsDeleted() {
@@ -188,5 +200,21 @@ public class Commodity implements Serializable {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public int getIsSale() {
+        return isSale;
+    }
+
+    public void setIsSale(int isSale) {
+        this.isSale = isSale;
+    }
+
+    public int getIsRecommend() {
+        return isRecommend;
+    }
+
+    public void setIsRecommend(int isRecommend) {
+        this.isRecommend = isRecommend;
     }
 }

@@ -12,13 +12,15 @@
         <result property="commodityName" column="commodity_name"/>
         <result property="commodityPrice" column="commodity_price"/>
         <result property="commodityImg" column="commodity_img"/>
+        <result property="isSale" column="is_sale"/>
         <result property="isDeleted" column="is_deleted"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
     <!--把需要查询的字段写成公用列-->
     <sql id="base_column">
-        id,type_level_two_id,shop_id,shop_name,commodity_id,commodity_name,commodity_price,commodity_img,is_deleted,update_time
+        id,type_level_two_id,shop_id,shop_name,commodity_id,commodity_name,commodity_price,
+        commodity_img,is_sale,is_deleted,update_time
     </sql>
 
     <!-- 搜素所有未逻辑删除的CommodityHomepageRecommend-->
@@ -33,10 +35,10 @@
     <insert id="insert" parameterType="CommodityHomepageRecommend">
         insert into
         commodity_homepage_recommend
-        (type_level_two_id,shop_id,shop_name,commodity_id,commodity_name,commodity_price,commodity_img,is_deleted,update_time)
+        (type_level_two_id,shop_id,shop_name,commodity_id,commodity_name,commodity_price,commodity_img,is_sale,is_deleted,update_time)
         values
         (
-        #{typeLevelTwoId},#{shopId},#{shopName},#{commodityId},#{commodityName},#{commodityPrice},#{commodityImg},#{isDeleted},now()
+        #{typeLevelTwoId},#{shopId},#{shopName},#{commodityId},#{commodityName},#{commodityPrice},#{commodityImg},#{isSale}#{isDeleted},now()
         )
     </insert>
 
@@ -52,6 +54,7 @@
         commodity_name=#{commodityName},
         commodity_price=#{commodityPrice},
         commodity_img=#{commodityImg},
+        is_sale=#{isSale},
         is_deleted=#{isDeleted},
         update_time=now()
         where

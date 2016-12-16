@@ -1,14 +1,15 @@
 package com.jzh.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * 店铺简介——商品详情页面
+ * 店铺简介——商品详情页面、店铺搜索页面
  *
  * @author Yunpeng Ma
  * @version 1.0
  */
-public class StoreInfo implements Serializable{
+public class ShopInfo implements Serializable{
 	/**
 	 *
 	 */
@@ -37,7 +38,15 @@ public class StoreInfo implements Serializable{
 	/**
 	 * 店铺图片url
 	 */
-	private String img;
+	private String displayImage;
+
+	/**
+	 * 店铺经营商品类型集合
+	 */
+	private List<Category> category;
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -62,13 +71,20 @@ public class StoreInfo implements Serializable{
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
-	public String getImg() {
-		return img;
-	}
-	public void setImg(String img) {
-		this.img = img;
-	}
-	
-	
 
+	public String getDisplayImage() {
+		return displayImage;
+	}
+
+	public void setDisplayImage(String displayImage) {
+		this.displayImage = displayImage;
+	}
+
+	public List<Category> getCategory() {
+		return category;
+	}
+
+	public void setCategory(List<Category> category) {
+		this.category = category;
+	}
 }

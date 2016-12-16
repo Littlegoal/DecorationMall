@@ -2,16 +2,12 @@
   "id": 12345,
   "name" : "店家名字店家名字",
   "address" : "12345",
-  "contact": {
-    "qq" : "",
-    "qrcode" : "",
-    "phone" : [],
-    "name" : ""
-
-  },
+  "qq" : "",
+  "qrcode" : "",
+  "contact" : [],
   "introduction": "我们是一家致力于更好的产品以及更好的服务体验的家具建材店家，十分希望有机会和您合作！",
-  "img": "",
-  "classes": [
+  "displayImage": "",
+  "category": [
     {
       "name" : "全部商品",
       "id" : "0"
@@ -30,39 +26,57 @@
     "goods" : [
       {
         "id" : 123,
-        "title" : "合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗",
+        "name" : "合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗",
         "price": 2688,
-        "mainImg" : "http://www.hetaojia.com/shop/hetao/index/2-1.jpg"
+        "sale":1,
+        "displayImage" : "http://www.hetaojia.com/shop/hetao/index/2-1.jpg"
+        "shopId": 12345,
+        "shopName" : ""
       },
       {
         "id" : 456,
-        "title" : "合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗",
+        "name" : "合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗",
         "price": 2688,
-        "mainImg" : "http://www.hetaojia.com/shop/hetao/index/2-1.jpg"
+        "sale":1,
+        "displayImage" : "http://www.hetaojia.com/shop/hetao/index/2-1.jpg"
+        "shopId": 12345,
+        "shopName" : ""
       },
       {
-        "id" : 111,
-        "title" : "合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗",
+        "id" : 456,
+        "name" : "合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗",
         "price": 2688,
-        "mainImg" : "http://www.hetaojia.com/shop/hetao/index/2-1.jpg"
+        "sale":1,
+        "displayImage" : "http://www.hetaojia.com/shop/hetao/index/2-1.jpg"
+        "shopId": 12345,
+        "shopName" : ""
       },
       {
-        "id" : 222,
-        "title" : "合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗",
+        "id" : 456,
+        "name" : "合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗",
         "price": 2688,
-        "mainImg" : "http://www.hetaojia.com/shop/hetao/index/2-1.jpg"
+        "sale":1,
+        "displayImage" : "http://www.hetaojia.com/shop/hetao/index/2-1.jpg"
+        "shopId": 12345,
+        "shopName" : ""
       },
       {
-        "id" : 333,
-        "title" : "合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗",
+        "id" : 456,
+        "name" : "合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗",
         "price": 2688,
-        "mainImg" : "http://www.hetaojia.com/shop/hetao/index/2-1.jpg"
+        "sale":1,
+        "displayImage" : "http://www.hetaojia.com/shop/hetao/index/2-1.jpg"
+        "shopId": 12345,
+        "shopName" : ""
       },
       {
-        "id" : 444,
-        "title" : "合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗",
+        "id" : 456,
+        "name" : "合购家具 欧式布艺沙发客厅简约小户型实木转角贵妃组合可拆洗",
         "price": 2688,
-        "mainImg" : "http://www.hetaojia.com/shop/hetao/index/2-1.jpg"
+        "sale":1,
+        "displayImage" : "http://www.hetaojia.com/shop/hetao/index/2-1.jpg"
+        "shopId": 12345,
+        "shopName" : ""
       }
     ],
     "page" : 1,

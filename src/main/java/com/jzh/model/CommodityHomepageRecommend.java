@@ -55,6 +55,11 @@ public class CommodityHomepageRecommend implements Serializable {
     private String commodityImg;
 
     /**
+     * 促销标记位，未促销为1，已促销为0
+     */
+    private int isSale;
+
+    /**
      * 删除标记位,未删除为1,已删除为0
      */
     private int isDeleted;
@@ -138,6 +143,14 @@ public class CommodityHomepageRecommend implements Serializable {
 
     public String getUpdateTime() {
         return updateTime;
+    }
+
+    public int getIsSale() {
+        return isSale;
+    }
+
+    public void setIsSale(int isSale) {
+        this.isSale = isSale;
     }
 
     public void setUpdateTime(String updateTime) {

@@ -33,7 +33,17 @@ public class ShopDetail implements Serializable{
 	/**
 	 * 联系方式
 	 */
-	private Contact contact;
+	private String contact;
+
+	/**
+	 * 二维码链接
+	 */
+	private String qrCode;
+
+	/**
+	 * qq
+	 */
+	private String qq;
 
 	/**
 	 * 店铺介绍
@@ -48,12 +58,13 @@ public class ShopDetail implements Serializable{
 	/**
 	 * 店铺商品类别（三级）集合
 	 */
-	private List<Class> classes;
+	private List<Category> classes;
 
 	/**
 	 * 商品简介集合
 	 */
 	private GoodsInfo goodsInfo;
+
 	public Long getId() {
 		return id;
 	}
@@ -72,12 +83,31 @@ public class ShopDetail implements Serializable{
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Contact getContact() {
+
+	public String getContact() {
 		return contact;
 	}
-	public void setContact(Contact contact) {
+
+	public void setContact(String contact) {
 		this.contact = contact;
 	}
+
+	public String getQrCode() {
+		return qrCode;
+	}
+
+	public void setQrCode(String qrCode) {
+		this.qrCode = qrCode;
+	}
+
+	public String getQq() {
+		return qq;
+	}
+
+	public void setQq(String qq) {
+		this.qq = qq;
+	}
+
 	public String getIntroduction() {
 		return introduction;
 	}
@@ -90,10 +120,10 @@ public class ShopDetail implements Serializable{
 	public void setImg(String img) {
 		this.img = img;
 	}
-	public List<Class> getClasses() {
+	public List<Category> getClasses() {
 		return classes;
 	}
-	public void setClasses(List<Class> classes) {
+	public void setClasses(List<Category> classes) {
 		this.classes = classes;
 	}
 	public GoodsInfo getGoodsInfo() {

@@ -28,7 +28,7 @@ public class Shop implements Serializable {
     /**
      * 简介
      */
-    private String introduce;
+    private String introduction;
 
     /**
      * 地址
@@ -86,12 +86,12 @@ public class Shop implements Serializable {
         this.name = name;
     }
 
-    public String getIntroduce() {
-        return introduce;
+    public String getIntroduction() {
+        return introduction;
     }
 
-    public void setIntroduce(String introduce) {
-        this.introduce = introduce;
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 
     public String getAddress() {
