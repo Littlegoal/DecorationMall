@@ -12,3 +12,4 @@ buildNumber.properties
 classes/
 jdbc.properties
 .DS_Store
+log4j.properties
