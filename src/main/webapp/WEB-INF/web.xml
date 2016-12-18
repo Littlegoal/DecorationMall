@@ -9,9 +9,9 @@
     <!-- Spring -->
     <!-- 配置Spring配置文件路径 -->
     <context-param>
-        <param-name>contextConfigzLocation</param-name>
+        <param-name>contextConfigLocation</param-name>
         <param-value>classpath:/spring/applicationContext.xml;
-            classpath:/shiro/spring-shiro.xml;
+            classpath:/shiro/spring-shiro.xml
         </param-value>
     </context-param>
     <!-- 配置Spring上下文监听器 -->
