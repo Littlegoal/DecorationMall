@@ -94,12 +94,6 @@
         where commodity_id=#{0}
     </select>
 
-    <select id="getCommodityById" parameterType="java.lang.Long" resultMap="CommodityMap">
-        select
-        <include refid="base_column" />
-        from commodity
-        where commodity_id=#{id}
-    </select>
     
     <select id="getCommodityByType" parameterType="java.lang.Long" resultMap="CommodityMap">
         select

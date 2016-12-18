@@ -1,10 +1,18 @@
 package com.jzh.service.impl;
 
 import com.jzh.dao.CommodityDao;
+import com.jzh.dao.CommodityTypeLevelThreeDao;
+import com.jzh.dao.CommodityTypeLevelTwoDao;
+import com.jzh.dto.Category;
 import com.jzh.model.Commodity;
+import com.jzh.model.CommodityTypeLevelThree;
+import com.jzh.model.CommodityTypeLevelTwo;
 import com.jzh.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -16,6 +24,10 @@ public class CommodityServiceImpl extends GenericServiceImpl<Commodity,Long> imp
 
     @Autowired
     CommodityDao commodityDao;
+    @Autowired
+    CommodityTypeLevelTwoDao commodityTypeLevelTwoDao;
+    @Autowired
+    CommodityTypeLevelThreeDao commodityTypeLevelThreeDao;
 
     @Autowired
     public CommodityServiceImpl(CommodityDao commodityDao){
@@ -23,5 +35,16 @@ public class CommodityServiceImpl extends GenericServiceImpl<Commodity,Long> imp
         this.commodityDao = commodityDao;
     }
 
+    @Override
+    public List<Category> getBreadcrumbNavigationById(Long commodityId) {
 
+        Commodity commodity = commodityDao.get(commodityId);
+        Long commodityTypeLevelThreeId = commodity.getTypeId();
+        CommodityTypeLevelThree commodityTypeLevelThree = commodityTypeLevelThreeDao.get(commodityTypeLevelThreeId);
+        CommodityTypeLevelTwo commodityTypeLevelTwo = commodityTypeLevelTwoDao.get(commodityTypeLevelThree.getTypeLevelTwoId());
+
+        List<Category> categories = new ArrayList<>();
+        Category categoryThree = new Category();
+        return null;
+    }
 }

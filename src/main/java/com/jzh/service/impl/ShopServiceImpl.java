@@ -1,10 +1,12 @@
 package com.jzh.service.impl;
 
+import com.jzh.dao.CommodityTypeLevelThreeDao;
 import com.jzh.dao.ShopDao;
 import com.jzh.model.Shop;
 import com.jzh.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 /**
  * @author Junhao Zhou 2016/11/25
@@ -16,10 +18,13 @@ public class ShopServiceImpl extends GenericServiceImpl<Shop, Long>
 
     @Autowired
     private ShopDao shopDao;
+    @Autowired
+    private CommodityTypeLevelThreeDao commodityTypeLevelThreeDao;
 
     @Autowired
     public ShopServiceImpl(ShopDao shopDao) {
         super(shopDao);
         this.shopDao = shopDao;
     }
+
 }

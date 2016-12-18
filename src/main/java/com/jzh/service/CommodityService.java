@@ -1,5 +1,6 @@
 package com.jzh.service;
 
+import com.jzh.dto.Category;
 import com.jzh.model.Commodity;
 
 import java.util.List;
@@ -11,45 +12,9 @@ import java.util.List;
 public interface CommodityService extends GenericService<Commodity,Long>{
 
     /**
-     * 查询所有对象
-     *
+     * 根据商品id获取面包屑导航
+     * @param commodityId
      * @return
      */
-    @Override
-    List<Commodity> listAll();
-
-    /**
-     * 获取单条数据
-     *
-     * @param id
-     * @return
-     */
-    @Override
-    Commodity get(final Long id);
-
-    /**
-     * 插入数据
-     *
-     * @param commodity
-     * @return
-     */
-    @Override
-    int insert(Commodity commodity);
-
-    /**
-     * 更新数据
-     *
-     * @param commodity
-     * @return
-     */
-    @Override
-    int update(Commodity commodity);
-
-    /**
-     * 删除数据
-     * @param id
-     * @return
-     */
-    @Override
-    int delete(final Long id);
+    List<Category> getBreadcrumbNavigationById(Long commodityId);
 }
