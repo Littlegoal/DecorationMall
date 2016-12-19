@@ -12,17 +12,18 @@
         <result property="introduction" column="introduction"/>
         <result property="score" column="score"/>
         <result property="pageview" column="pageview"/>
-        <result property="workCount" column="work_cmount"/>
-        <result property="commentCount" column="comment_cmount"/>
-        <result property="orderCount" column="order_cmount"/>
+        <result property="workCount" column="work_count"/>
+        <result property="commentCount" column="comment_count"/>
+        <result property="orderCount" column="order_count"/>
         <result property="isDeleted" column="is_deleted"/>
         <result property="updateTime" column="update_time"/>
+        <result property="workerPhoto" column="worker_photo"/>
     </resultMap>
 
     <!--把需要查询的字段写成公用列-->
     <sql id="base_column">
         worker_id,worker_type_id,worker_name,contact,service_area,introduction,is_deleted,
-        score,pageview,work_count,comment_count,order_count,update_time
+        score,pageview,work_count,comment_count,order_count,update_time,worker_photo
     </sql>
 
     <!-- 搜素所有未逻辑删除的Worker-->
@@ -37,12 +38,12 @@
     <insert id="insert" parameterType="Worker">
         insert into
         worker (worker_type_id,worker_name,contact,service_area,introduction,
-        score,pageview,work_count,comment_count,order_count,is_deleted,update_time)
+        score,pageview,work_count,comment_count,order_count,is_deleted,update_time,worker_photo)
         values
         (
         #{workerTypeId},#{workerName},#{contact},#{serviceArea},#{introduction},
         #{score},#{pageview},#{workCount},#{commentCount},#{orderCount},
-        #{isDeleted},now()
+        #{isDeleted},now(),#{workerPhoto}
         )
     </insert>
 
@@ -58,11 +59,12 @@
         introduction=#{introduction},
         score=#{score},
         pageview=#{pageview},
-        work_cmount=#{workCount},
-        comment_cmount=#{commentCount},
-        order_cmount=#{orderCount},
+        work_count=#{workCount},
+        comment_count=#{commentCount},
+        order_count=#{orderCount},
         is_deleted=#{isDeleted},
-        update_time=now()
+        update_time=now(),
+        worker_photo=#{workerPhoto}
         where
         worker_id=#{workerId}
     </update>

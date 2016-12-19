@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzh.dao.WorkerHomepageRecommendDao">
+
+    <!-- WorkerHomepageRecommend集合申明 -->
+    <resultMap id="workerHomepageRecommendMap" type="WorkerHomepageRecommend">
+        <id property="id" column="id"/>
+        <result property="typeLevelTwoId" column="type_level_two_id"/>
+        <result property="workerId" column="worker_id"/>
+        <result property="workerName" column="worker_name"/>
+        <result property="workId" column="work_id"/>
+        <result property="workName" column="work_name"/>
+        <result property="workImg" column="work_img"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="workerPhoto" column="worker_photo"/>
+    </resultMap>
+
+    <!--把需要查询的字段写成公用列-->
+    <sql id="base_column">
+        id,type_level_two_id,worker_id,worker_name,work_id,work_name,work_img,is_deleted,update_time,worker_photo
+    </sql>
+
+    <!-- 搜素所有未逻辑删除的WorkerHomepageRecommend-->
+    <select id="listAll" resultMap="workerHomepageRecommendMap">
+        SELECT
+        <include refid="base_column"/>
+        FROM
+        worker_homepage_recommend
+    </select>
+
+    <!-- 新增WorkerHomepageRecommend -->
+    <insert id="insert" parameterType="WorkerHomepageRecommend">
+        INSERT INTO
+        worker_homepage_recommend
+        (type_level_two_id,worker_id,worker_name,work_id,work_name,work_img,is_deleted,update_time,worker_photo)
+        VALUES
+        (
+        #{typeLevelTwoId},#{workerId},#{workerName},#{workId},#{workName},#{workImg},#{isDeleted},now(),#{workerPhoto}
+        )
+    </insert>
+
+    <!-- 更新WorkerHomepageRecommend -->
+    <update id="update" parameterType="WorkerHomepageRecommend">
+        UPDATE
+        worker_homepage_recommend
+        SET
+        type_level_two_id=#{typeLevelTwoId},
+        worker_id=#{workerId},
+        worker_name=#{workerName},
+        work_id=#{workId},
+        work_name=#{workName},
+        work_img=#{workImg},
+        is_deleted=#{isDeleted},
+        update_time=now(),
+        worker_photo=#{workerPhoto}
+        WHERE
+        id=#{id}
+    </update>
+
+    <!-- 删除WorkerHomepageRecommend-->
+    <delete id="delete" parameterType="Long">
+        UPDATE
+        worker_homepage_recommend
+        SET
+        is_deleted=0,
+        update_time=now()
+        WHERE
+        id=#{id}
+    </delete>
+
+    <!-- 查询WorkerHomepageRecommend -->
+    <select id="get" parameterType="Long" resultMap="workerHomepageRecommendMap">
+        SELECT
+        <include refid="base_column"/>
+        FROM
+        worker_homepage_recommend
+        WHERE
+        id=#{id}
+    </select>
+
+
+</mapper>

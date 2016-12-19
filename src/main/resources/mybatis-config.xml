@@ -15,6 +15,7 @@
         <typeAlias alias="Commodity" type="com.jzh.model.Commodity"/>
         <typeAlias alias="Worker" type="com.jzh.model.Worker"/>
         <typeAlias alias="Work" type="com.jzh.model.Work"/>
+        <typeAlias alias="WorkerHomepageRecommend" type="com.jzh.model.WorkerHomepageRecommend"/>
     </typeAliases>
 
     <plugins>

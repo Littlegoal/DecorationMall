@@ -22,7 +22,7 @@ public class Work implements Serializable {
     private long workerId;
 
     /**
-     * 样式名称
+     * 案例名称
      */
     private String name;
 

@@ -77,6 +77,11 @@ public class Worker implements Serializable {
      */
     private String updateTime;
 
+    /**
+     * 工人照片
+     */
+    private String workerPhoto;
+
     public Long getWorkerId() {
         return workerId;
     }
@@ -179,5 +184,13 @@ public class Worker implements Serializable {
 
     public void setOrderCount(Long orderCount) {
         this.orderCount = orderCount;
+    }
+
+    public String getWorkerPhoto() {
+        return workerPhoto;
+    }
+
+    public void setWorkerPhoto(String workerPhoto) {
+        this.workerPhoto = workerPhoto;
     }
 }
