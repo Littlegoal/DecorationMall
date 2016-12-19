@@ -1,5 +1,6 @@
 package com.jzh.service;
 
+import com.jzh.dto.ShopInfo;
 import com.jzh.model.Shop;
 
 import java.util.List;
@@ -10,18 +11,10 @@ import java.util.List;
  */
 public interface ShopService extends GenericService<Shop, Long> {
 
-    @Override
-    List<Shop> listAll();
-
-    @Override
-    Shop get(final Long id);
-
-    @Override
-    int insert(Shop entity);
-
-    @Override
-    int update(Shop entity);
-
-    @Override
-    int delete(final Long id);
+    /**
+     * 根据店铺id获取店铺简介
+     * @param shopId
+     * @return
+     */
+    ShopInfo getShopInfoById(Long shopId);
 }

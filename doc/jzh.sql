@@ -358,7 +358,6 @@ CREATE TABLE `worker_homepage_recommend` (
   `type_level_two_id` bigint(20) unsigned NOT NULL COMMENT '商品二级分类id',
   `worker_id` bigint(20) unsigned NOT NULL COMMENT '工人id',
   `worker_name` varchar(20) NOT NULL COMMENT '工人名称',
-  `worker_img` text NOT NULL COMMENT '工人头像',
   `work_id` bigint(20) unsigned NOT NULL COMMENT '装修案例id',
   `work_name` varchar(100) NOT NULL COMMENT '装修案例名称',
   `work_img` text NOT NULL COMMENT '案例主图片',

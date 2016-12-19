@@ -44,7 +44,16 @@ public class CommodityServiceImpl extends GenericServiceImpl<Commodity,Long> imp
         CommodityTypeLevelTwo commodityTypeLevelTwo = commodityTypeLevelTwoDao.get(commodityTypeLevelThree.getTypeLevelTwoId());
 
         List<Category> categories = new ArrayList<>();
+        Category categoryTwo = new Category();
+        categoryTwo.setId(commodityTypeLevelTwo.getTypeLevelTwoId());
+        categoryTwo.setName(commodityTypeLevelTwo.getTypeLevelTwoName());
+        categories.add(categoryTwo);
+
         Category categoryThree = new Category();
-        return null;
+        categoryThree.setId(commodityTypeLevelThreeId);
+        categoryThree.setName(commodityTypeLevelThree.getTypeLevelThreeName());
+        categories.add(categoryThree);
+
+        return categories;
     }
 }

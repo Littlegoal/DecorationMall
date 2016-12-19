@@ -1,6 +1,7 @@
 package com.jzh.controller;
 
 import com.google.gson.Gson;
+import com.jzh.service.CommodityService;
 import com.jzh.service.CommodityTypeLevelThreeService;
 import com.jzh.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,15 @@ public class ShopController {
     ShopService shopService;
     @Autowired
     CommodityTypeLevelThreeService commodityTypeLevelThreeService;
+    @Autowired
+    CommodityService commodityService;
 
     @RequestMapping(value = "/test",method = {RequestMethod.GET,RequestMethod.POST},produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String test() {
-        String str = "1,2,3";
+        Long id = 1l;
         Gson gson = new Gson();
 
-        return gson.toJson(commodityTypeLevelThreeService.getCategoryListByCommodityTypes(str));
+        return gson.toJson(shopService.getShopInfoById(id));
     }
 }
