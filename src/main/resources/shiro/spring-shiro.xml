@@ -14,7 +14,7 @@
     </bean>
 
     <!--項目自定义的Realm -->
-    <bean id="loginRealm" class="com.jzh.utils.shiro.LoginRealm">
+    <bean id="loginRealm" class="com.jzh.service.impl.LoginRealm">
         <property name="cacheManager" ref="cacheManager"/>
     </bean>
 

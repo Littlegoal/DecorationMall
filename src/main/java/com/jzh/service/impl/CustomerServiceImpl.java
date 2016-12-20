@@ -50,4 +50,19 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long>
         }
         return result;
     }
+
+    @Override
+    public Result logout() {
+        Result result = new Result();
+        Subject user = SecurityUtils.getSubject();
+        if (!user.isAuthenticated()) {
+            result.setSuccess(false);
+            result.setMessage("并没有登录！");
+            return result;
+        }
+        user.logout();
+        result.setSuccess(true);
+        return result;
+    }
+
 }

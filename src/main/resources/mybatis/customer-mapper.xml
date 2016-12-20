@@ -8,12 +8,14 @@
         <result property="account" column="customer_account"/>
         <result property="password" column="customer_pwd"/>
         <result property="isDeleted" column="is_deleted"/>
+        <result property="salt" column="customer_salt"/>
+        <result property="nickname" column="customer_nickname"/>
         <result property="latestUpdateTime" column="update_time"/>
     </resultMap>
 
     <!--把需要查询的字段写成公用列-->
     <sql id="base_column">
-        customer_id,customer_account,customer_pwd,is_deleted,update_time
+        customer_id,customer_account,customer_nickname,is_deleted,update_time
     </sql>
 
     <!-- 搜素所有未逻辑删除的Customer-->
@@ -28,10 +30,10 @@
     <insert id="insert" parameterType="Customer">
         insert into
         customer
-        (customer_account,customer_pwd,is_deleted,update_time)
+        (customer_account,customer_pwd,customer_salt,customer_nickname,is_deleted,update_time)
         values
         (
-        #{account},#{password},#{isDeleted},now()
+        #{account},#{password},#{salt},#{nickname},#{isDeleted},now()
         )
     </insert>
 
@@ -69,4 +71,41 @@
         customer_id=#{id} and is_deleted = 1
     </select>
 
+    <!-- 用户登录 -->
+    <select id="login" resultMap="CustomerMap">
+        SELECT
+        <include refid="base_column"/>
+        FROM
+        customer
+        WHERE
+        customer_account=#{account}
+        AND
+        customer_pwd=#{password}
+        AND
+        is_deleted=1
+    </select>
+
+    <!-- 获取用户盐值 -->
+    <select id="getSalt" parameterType="String" resultType="String">
+        SELECT
+        customer_salt
+        FROM
+        customer
+        WHERE
+        customer_account=#{account}
+        AND
+        is_deleted = 1
+    </select>
+
+    <!-- 更新用户盐值 -->
+    <select id="updateSalt" resultType="Integer">
+        UPDATE
+        customer
+        SET
+        customer_salt=#{salt}
+        WHERE
+        customer_account=#{account}
+        AND
+        is_deleted=1
+    </select>
 </mapper>

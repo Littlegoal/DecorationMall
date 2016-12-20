@@ -253,7 +253,9 @@ DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer` (
   `customer_id` bigint(20) NOT NULL COMMENT '用户id',
   `customer_account` varchar(30) NOT NULL COMMENT '账号',
-  `customer_pwd` varchar(20) NOT NULL COMMENT '密码',
+  `customer_nickname` VARCHAR(20) NOT NULL COMMENT '昵称',
+  `customer_pwd` varchar(300) NOT NULL COMMENT '密码',
+  `customer_salt` varchar(100) NOT NULL COMMENT '盐值',
   `is_deleted` int(1) NOT NULL COMMENT '删除标记位，未删除为1，已删除为0',
   `update_time` datetime NOT NULL COMMENT '最后更新时间',
   PRIMARY KEY (`customer_id`)
@@ -262,8 +264,8 @@ CREATE TABLE `customer` (
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
-INSERT INTO `customer` VALUES ('1', 'customer_1', '123456', '1', '2016-12-05 12:21:46');
-INSERT INTO `customer` VALUES ('2', 'customer_2', '123456', '1', '2016-12-05 12:54:59');
+INSERT INTO `customer` VALUES ('1', 'customer_1', 'Littlechoc','123456', '', '1', '2016-12-05 12:21:46');
+INSERT INTO `customer` VALUES ('2', 'customer_2', 'joejhzhou', '123456', '', '1', '2016-12-05 12:54:59');
 
 -- ----------------------------
 -- Table structure for worker

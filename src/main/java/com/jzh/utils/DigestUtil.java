@@ -2,6 +2,7 @@ package com.jzh.utils;
 
 import org.apache.shiro.codec.Hex;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -24,15 +25,67 @@ public class DigestUtil {
 
     public static final String SHA_512 = "SHA-512";
 
+    public static final String UTF_8 = "UTF_8";
+
+    /**
+     * 对字符串生成摘要，默认使用MD5算法
+     *
+     * @param message 字符串，默认使用UTF-8解码
+     * @return 摘要，注意可能为空
+     */
+    public static String digest(String message) {
+        return digest(MD5, message, UTF_8);
+    }
+
     /**
      * 对字符串生成摘要
      *
      * @param algorithm 摘要算法，支持{@link #MD5},{@link #SHA},{@link #SHA_256},{@link #SHA_512}。
-     * @param message   字符串
-     * @return 16进制编码摘要
+     * @param message   字符串，默认使用UTF-8解码
+     * @return 16进制编码摘要，注意可能为空
      */
     public static String digest(String algorithm, String message) {
-        return digest(algorithm, message.getBytes());
+        return digest(algorithm, message, UTF_8);
+    }
+
+    /**
+     * 对字符串生成摘要
+     *
+     * @param algorithm 摘要算法
+     * @param message   字符串
+     * @param encode    字符串编码格式
+     * @return 16进制编码摘要，注意可能为空
+     */
+    public static String digest(String algorithm, String message, String encode) {
+        try {
+            return digest(algorithm, message.getBytes(encode));
+        } catch (UnsupportedEncodingException e) {
+            logger.warn("UnsupportedEncodingException: " + encode, e);
+            return "";
+        }
+    }
+
+    /**
+     * 对字符串生成摘要
+     *
+     * @param algorithm 摘要算法
+     * @param message   字符串,默认使用UTF-8解码
+     * @return 摘要
+     */
+    public static String digest(String algorithm, char[] message) {
+        return digest(algorithm, message, UTF_8);
+    }
+
+    /**
+     * 对字符串生成摘要
+     *
+     * @param algorithm 摘要算法
+     * @param message   字符串
+     * @param encode    字符编码方式
+     * @return 摘要
+     */
+    public static String digest(String algorithm, char[] message, String encode) {
+        return "";
     }
 
     /**
@@ -43,6 +96,7 @@ public class DigestUtil {
      * @return 摘要
      */
     public static String digest(String algorithm, byte[] message) {
+        // FIXME 潜在NullPointer，哪天心情好了看看
         return Hex.encodeToString(digest(getDigest(algorithm), message));
     }
 

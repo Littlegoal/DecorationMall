@@ -26,9 +26,9 @@ public class Customer implements Serializable {
     private String account;
 
     /**
-     * 密码
+     * 昵称
      */
-    private String password;
+    private String nickname;
 
     /**
      * 最近更新时间
@@ -56,20 +56,20 @@ public class Customer implements Serializable {
         this.account = account;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public int getIsDeleted() {
         return isDeleted;
     }
 
     public void setIsDeleted(int isDeleted) {
         this.isDeleted = isDeleted;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getLatestUpdateTime() {

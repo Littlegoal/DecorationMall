@@ -35,4 +35,11 @@ public interface CustomerService extends GenericService<Customer, Long> {
      * @return 登录结果
      */
     Result login(String phone, char[] password, boolean rememberMe);
+
+    /**
+     * 登出
+     *
+     * @return 登出结果
+     */
+    Result logout();
 }
