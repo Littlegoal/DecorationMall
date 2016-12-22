@@ -1,6 +1,7 @@
 package com.jzh.dao;
 
 import com.jzh.model.CommodityHomepageRecommend;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,18 +11,10 @@ import java.util.List;
  */
 public interface CommodityHomepageRecommendDao extends GenericDao<CommodityHomepageRecommend,Long> {
 
-    @Override
-    List<CommodityHomepageRecommend> listAll();
-
-    @Override
-    CommodityHomepageRecommend get(final Long id);
-
-    @Override
-    int insert(CommodityHomepageRecommend entity);
-
-    @Override
-    int update(CommodityHomepageRecommend entity);
-
-    @Override
-    int delete(final Long id);
+    /**
+     * 根据商品类型id获取首页推荐商品集合
+     *
+     * @return
+     */
+    List<CommodityHomepageRecommend> getRecommendListByTypeId(@Param("id")Long typeId);
 }

@@ -3,7 +3,7 @@
 <mapper namespace="com.jzh.dao.CommodityDao">
 
     <!-- Commodity集合申明 -->
-    <resultMap id="CommodityMap" type="Commodity">
+    <resultMap id="commodityMap" type="Commodity">
         <id property="id" column="commodity_id"/>
         <result property="typeId" column="commodity_type_id"/>
         <result property="name" column="commodity_name"/>
@@ -31,7 +31,7 @@
     </sql>
 
     <!-- 搜素所有未逻辑删除的Commodity-->
-    <select id="listAll" resultMap="CommodityMap">
+    <select id="listAll" resultMap="commodityMap">
         select
         <include refid="base_column" />
         from commodity
@@ -87,22 +87,45 @@
     </delete>
 
     <!-- 查询Commodity -->
-    <select id="get" parameterType="java.lang.Long" resultMap="CommodityMap">
+    <select id="get" parameterType="java.lang.Long" resultMap="commodityMap">
         select
         <include refid="base_column" />
         from commodity
         where commodity_id=#{0}
     </select>
 
-    
-    <select id="getCommodityByType" parameterType="java.lang.Long" resultMap="CommodityMap">
+    <!-- 根据name字段的多关键字和相关条件查询Commodity -->
+    <select id="searchPageForCustomerByConditions"  resultMap="commodityMap">
+        select
+        <include refid="base_column"/>
+        from
+        commodity
+        where
+        <foreach collection="keywords" item="keyword" index="index" open="" close="" separator="and">
+            <choose>
+                <when test="keywords.get(index) != null">
+                    commodity_name like concat('%',#{keyword},'%')
+                </when>
+                <otherwise>
+                    1 = 1
+                </otherwise>
+            </choose>
+        </foreach>
+        <choose>
+            <when test="typeId != -1">
+                and commodity_type_id=#{typeId}
+            </when>
+        </choose>
+    </select>
+
+    <select id="getCommodityByType" parameterType="java.lang.Long" resultMap="commodityMap">
         select
         <include refid="base_column" />
         from commodity
         where commodity_type_id=#{typeId}
     </select>
 
-    <select id="getCommodityByShopAndType" parameterType="java.lang.Long" resultMap="CommodityMap">
+    <select id="getCommodityByShopAndType" parameterType="java.lang.Long" resultMap="commodityMap">
         select
         <include refid="base_column" />
         from commodity

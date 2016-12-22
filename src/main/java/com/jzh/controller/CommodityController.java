@@ -5,12 +5,12 @@ import com.jzh.model.Commodity;
 import com.jzh.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Yunpeng Ma
@@ -58,5 +58,31 @@ public class CommodityController {
         Gson gson = new Gson();
         Commodity commodity = gson.fromJson(requsetBody,Commodity.class);
         commodityService.update(commodity);
+    }
+
+    /**
+     * 多关键字搜索
+     *
+     * @param str1
+     * @param str2
+     * @return
+     */
+    @RequestMapping(value = "/search/{str1}/{str2}/{typeId}",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String searchByKeywords(@PathVariable String str1, @PathVariable String str2,@PathVariable Long typeId){
+        List<String> keywords = new ArrayList<>();
+        keywords.add(str1);
+        keywords.add(str2);
+
+        String str3 = null;
+        keywords.add(str3);
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("keywords",keywords);
+        map.put("typeId",typeId);
+
+        Gson gson = new Gson();
+        List<Commodity> list = commodityService.searchPageForCustomerByConditions(1,10,map).getList();
+        return gson.toJson(list);
     }
 }

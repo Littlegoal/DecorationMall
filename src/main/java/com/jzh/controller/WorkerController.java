@@ -10,7 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Yunpeng Ma
@@ -76,7 +79,9 @@ public class WorkerController {
     @ResponseBody
     public String page(@PathVariable int pageNum, @PathVariable int pageSize) {
 
-        PageInfo page = workerService.searchForPage(pageNum,pageSize);
+        List<String> keywords = new ArrayList<>();
+        Map<String,Object> map = new HashMap<>();
+        PageInfo page = workerService.searchPageForCustomerByConditions(pageNum,pageSize,map);
         Gson gson = new Gson();
         System.out.println(page.getTotal());
         return gson.toJson(page.getList());

@@ -1,5 +1,6 @@
 package com.jzh.service;
 
+import com.jzh.dto.Goods;
 import com.jzh.model.CommodityHomepageRecommend;
 
 import java.util.List;
@@ -10,18 +11,9 @@ import java.util.List;
  */
 public interface CommodityHomepageRecommendService extends GenericService<CommodityHomepageRecommend,Long> {
 
-    @Override
-    List<CommodityHomepageRecommend> listAll();
-
-    @Override
-    CommodityHomepageRecommend get(final Long id);
-
-    @Override
-    int insert(CommodityHomepageRecommend entity);
-
-    @Override
-    int update(CommodityHomepageRecommend entity);
-
-    @Override
-    int delete(final Long id);
+    /**
+     * 获取家具首页推荐商品信息集合
+     * @return
+     */
+    List<Goods> getGoodsListForHomepageByTypeId(Long typeId);
 }

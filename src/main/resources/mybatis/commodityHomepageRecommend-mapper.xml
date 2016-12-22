@@ -31,6 +31,16 @@
         commodity_homepage_recommend
     </select>
 
+    <!-- 搜素所有逻辑删除的CommodityHomepageRecommend-->
+    <select id="listAllNoDeleted" resultMap="commodityHomepageRecommendMap">
+        select
+        <include refid="base_column" />
+        from
+        commodity_homepage_recommend
+        where
+        is_deleted = 1;
+    </select>
+
     <!-- 新增CommodityHomepageRecommend -->
     <insert id="insert" parameterType="CommodityHomepageRecommend">
         insert into
@@ -82,4 +92,15 @@
         id=#{id}
     </select>
 
+    <!-- 根据商品类型id获取CommodityHomepageRecommend-->
+    <select id="getRecommendListByTypeId" parameterType="Long" resultMap="commodityHomepageRecommendMap">
+        select
+        <include refid="base_column" />
+        from
+        commodity_homepage_recommend
+        where
+        id=#{id}
+        and
+        is_deleted = 1;
+    </select>
 </mapper>

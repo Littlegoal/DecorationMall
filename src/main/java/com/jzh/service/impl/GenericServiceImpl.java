@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author Yunpeng Ma
@@ -52,9 +54,17 @@ public class GenericServiceImpl<T, PK extends Serializable> implements GenericSe
     }
 
     @Override
-    public PageInfo<T> searchForPage(int pageNum, int pageSize) {
+    public PageInfo<T> searchPageForCustomerByConditions(int pageNum, int pageSize, Map<String,Object> map) {
         PageHelper.startPage(pageNum,pageSize);
-        List<T> list = dao.listAll();
+        List<T> list = dao.searchPageForCustomerByConditions(map);
+        PageInfo<T> pageInfo = new PageInfo<T>(list);
+        return pageInfo;
+    }
+
+    @Override
+    public PageInfo<T> searchPageForAdminByConditions(int pageNum, int pageSize, Map<String, Object> map) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<T> list = dao.searchPageForAdminByConditions(map);
         PageInfo<T> pageInfo = new PageInfo<T>(list);
         return pageInfo;
     }

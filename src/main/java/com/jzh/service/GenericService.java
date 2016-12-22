@@ -4,6 +4,8 @@ import com.github.pagehelper.PageInfo;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author Yunpeng Ma
@@ -50,10 +52,20 @@ public interface GenericService <T, PK extends Serializable> {
     int delete(final PK id);
 
     /**
-     * 查询分页
+     * 根据某一字段多关键字和相关条件分页查询数据__网站
      * @param pageNum
      * @param pageSize
+     * @param map
      * @return
      */
-    PageInfo<T> searchForPage(int pageNum, int pageSize);
+    PageInfo<T> searchPageForCustomerByConditions(int pageNum, int pageSize,Map<String,Object> map);
+
+    /**
+     * 根据某一字段多关键字和相关条件分页查询数据__后台管理系统
+     * @param pageNum
+     * @param pageSize
+     * @param map
+     * @return
+     */
+    PageInfo<T> searchPageForAdminByConditions(int pageNum, int pageSize,Map<String,Object> map);
 }

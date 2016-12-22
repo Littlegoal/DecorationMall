@@ -6,6 +6,7 @@
     <resultMap id="shopMap" type="Shop">
         <id property="id" column="shop_id"/>
         <result property="name" column="shop_name"/>
+        <result property="address" column="shop_address"/>
         <result property="introduction" column="shop_introduction"/>
         <result property="contact" column="contact_information"/>
         <result property="displayImage" column="img_shop"/>
@@ -18,7 +19,8 @@
 
     <!--把需要查询的字段写成公用列-->
     <sql id="base_column">
-        shop_id,shop_name,shop_introduction,contact_information,img_shop,qr_code,qq,commodity_type_id_set,is_deleted,update_time
+        shop_id,shop_name,shop_introduction,contact_information,img_shop,qr_code,qq,
+        commodity_type_id_set,shop_address,is_deleted,update_time
     </sql>
 
     <!-- 搜素所有未逻辑删除的Shop-->
@@ -26,17 +28,17 @@
         select
         <include refid="base_column"/>
         from
-        shop where is_deleted = 1
+        shop
     </select>
 
     <!-- 新增Shop -->
     <insert id="insert" parameterType="Shop">
         insert into
         shop
-        (shop_name,shop_introduction,contact_information,img_shop,qr_code,qq,commodity_type_id_set,is_deleted,update_time)
+        (shop_name,shop_introduction,shop_address,contact_information,img_shop,qr_code,qq,commodity_type_id_set,is_deleted,update_time)
         values
         (
-        #{name},#{introduction},#{contact},#{displayImage},#{qrCode},#{qq},#{commodityTypes},#{isDeleted},now()
+        #{name},#{introduction},#{address},#{contact},#{displayImage},#{qrCode},#{qq},#{commodityTypes},#{isDeleted},now()
         )
     </insert>
 
@@ -47,6 +49,7 @@
         set
         shop_name=#{name},
         shop_introduction=#{introduction},
+        shop_address=#{address},
         contact_information=#{contact},
         img_shop=#{displayImage},
         qr_code=#{qrCode},
@@ -66,7 +69,7 @@
         is_deleted=0,
         update_time=now()
         where
-        shop_ip=#{id}
+        shop_id=#{id}
     </delete>
 
     <!-- 查询Shop -->
@@ -76,7 +79,7 @@
         from
         shop
         where
-        shop_id=#{id} and is_deleted = 1
+        shop_id=#{id}
     </select>
 
 </mapper>
