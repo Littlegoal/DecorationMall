@@ -28,46 +28,44 @@ public class SecurityString {
 
     private String encode;
 
-    public SecurityString(String data) {
-        this(data, DEFAULT_ENCODE);
+    public static SecurityString wrap(String data) {
+        return wrap(data, DEFAULT_ENCODE);
     }
 
-    public SecurityString(String data, String encode) {
-        this(data.toCharArray(), encode);
+    public static SecurityString wrap(String data, String encode) {
+        if (data == null) {
+            return wrap(new char[0], encode);
+        }
+        return wrap(data.toCharArray(), encode);
     }
 
-    public SecurityString(char[] data) {
-        this(data, DEFAULT_ENCODE);
+    public static SecurityString wrap(char[] data) {
+        return wrap(data, DEFAULT_ENCODE);
     }
 
-    public SecurityString(char[] data, String encode) {
-        updateData(data, encode);
+    public static SecurityString wrap(char[] data, String encode) {
+        return new SecurityString(data, encode);
     }
 
-    public void updateData(String data) {
-        updateData(data, DEFAULT_ENCODE);
-    }
-
-    public void updateData(String data, String encode) {
-        updateData(data.toCharArray(), encode);
-    }
-
-    public void updateData(char[] data) {
-        updateData(data, DEFAULT_ENCODE);
-    }
-
-    public void updateData(char[] data, String encode) {
+    private SecurityString(char[] data, String encode) {
+        this.encode = encode;
         if (data == null) {
             if (this.data == null) { // 保证data一定不为null
                 this.data = new char[0];
             }
             return;
         }
-        this.encode = encode;
         // 逻辑较为简单，不优化了
-        clear();
         this.data = new char[data.length];
         this.data = Arrays.copyOf(data, data.length);
+        // 将源数据清空
+        for (int i = 0; i < data.length; i++) {
+            data[i] = '\u0000';
+        }
+    }
+
+    private void updateData(char[] data, String encode) {
+
     }
 
     public char[] getData() {

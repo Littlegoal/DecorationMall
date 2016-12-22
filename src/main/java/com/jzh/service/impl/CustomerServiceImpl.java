@@ -45,8 +45,8 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long>
                 result.setMessage("登录失败！请检查用户名或者密码。");
             }
         } else {
-            result.setSuccess(true);
-            result.setMessage("登录成功");
+            result.setSuccess(false);
+            result.setMessage("请不要重复登录");
         }
         return result;
     }
