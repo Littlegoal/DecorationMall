@@ -3,6 +3,7 @@ package com.jzh.controller;
 import com.google.gson.Gson;
 import com.jzh.dto.Result;
 import com.jzh.service.CustomerService;
+import com.jzh.utils.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,11 @@ public class UserController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register() {
+        return "";
+    }
+
+    @RequestMapping(value = "/v_code", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+    public String getSmsVerificationCode(String phone) {
         return "";
     }
 }
