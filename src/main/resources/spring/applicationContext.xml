@@ -7,18 +7,31 @@
             http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd"
        default-lazy-init="true">
 
-       <!-- Activates scanning of @Autowired -->
-       <context:annotation-config/>
+    <!-- Activates scanning of @Autowired -->
+    <context:annotation-config/>
 
-       <task:annotation-driven /> <!-- 定时器开关-->
+    <task:annotation-driven/> <!-- 定时器开关-->
 
-       <!-- Activates scanning of @Repository and @service -->
-       <context:component-scan base-package="com.jzh">
-              <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-       </context:component-scan>
+    <!-- Activates scanning of @Repository and @service -->
+    <context:component-scan base-package="com.jzh">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
-       <!-- Add new DAOs new Managers -->
+    <!-- Add new DAOs new Managers -->
 
-       <import resource="applicationContext-mybatis.xml"/>
-       <import resource="applicationContext-spring.xml"/>
+    <!--properties bean-->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:properties/jdbc.properties" />
+        <property name="locations">
+            <list>
+                <value>classpath:properties/jdbc.properties</value>
+                <value>classpath:properties/log4j.properties</value>
+                <value>classpath:properties/jzh.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <import resource="applicationContext-mybatis.xml"/>
+    <import resource="applicationContext-spring.xml"/>
+    <import resource="classpath:shiro/spring-shiro.xml"/>
 </beans>

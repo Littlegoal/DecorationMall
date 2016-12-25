@@ -10,6 +10,5 @@ buildNumber.properties
 .idea/
 *.iml
 classes/
-jdbc.properties
+*.properties
 .DS_Store
-log4j.properties
