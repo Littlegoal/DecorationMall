@@ -108,4 +108,16 @@
         AND
         is_deleted=1
     </select>
+
+    <!-- 检查手机号 -->
+    <select id="checkPhone" resultType="Integer">
+        SELECT
+        COUNT(*)
+        FROM
+        customer
+        WHERE
+        customer_account=#{account}
+        AND
+        is_deleted=1
+    </select>
 </mapper>

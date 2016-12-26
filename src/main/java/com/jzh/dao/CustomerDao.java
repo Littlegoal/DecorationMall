@@ -46,4 +46,12 @@ public interface CustomerDao extends GenericDao<Customer, Long> {
      * @return 操作结果
      */
     int updateSalt(@Param("account") String phone, @Param("salt") String salt);
+
+    /**
+     * 检查手机号是否存在
+     *
+     * @param phone 手机号
+     * @return 结果
+     */
+    int checkPhone(@Param("account") String phone);
 }
