@@ -11,4 +11,5 @@ buildNumber.properties
 *.iml
 classes/
 *.properties
+properties/
 .DS_Store
