@@ -3,7 +3,7 @@ package com.jzh.service.impl;
 import com.jzh.dao.CustomerDao;
 import com.jzh.dto.Result;
 import com.jzh.service.SmsService;
-import com.jzh.utils.StringUtil;
+import com.jzh.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class SmsServiceImpl implements SmsService {
     public Result getVerificationCode(String phone) {
         Result result = new Result();
         // step 1: 检查手机号格式
-        if (!StringUtil.isPhone(phone)) {
+        if (!StringUtils.isPhone(phone)) {
             result.setSuccess(false);
             result.setMessage("手机号码格式不正确！");
 
@@ -55,4 +55,5 @@ public class SmsServiceImpl implements SmsService {
     private boolean checkFrequency() {
         return true;
     }
+
 }

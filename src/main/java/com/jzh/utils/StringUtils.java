@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  *
  * @author Junhao Zhou 2016/12/18
  */
-public class StringUtil {
+public class StringUtils {
 
     /**
      * 手机号正则表达式：<a href="http://www.jianshu.com/p/e8477fdccbe9">

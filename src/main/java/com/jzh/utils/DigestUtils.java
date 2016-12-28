@@ -13,9 +13,9 @@ import java.util.Random;
  *
  * @author Junhao Zhou 2016/12/17
  */
-public class DigestUtil {
+public class DigestUtils {
 
-    private static final Log logger = Log.getLog(DigestUtil.class);
+    private static final Log logger = Log.getLog(DigestUtils.class);
 
     public static final String MD5 = "MD5";
 
