@@ -68,7 +68,7 @@ public class SessionController {
      *
      * @return 登出结果
      */
-    @RequestMapping(value = "/logout", method = RequestMethod.DELETE,
+    @RequestMapping(value = "", method = RequestMethod.DELETE,
             produces = "text/html;charset=UTF-8")
     @ResponseBody
     @ApiOperation(
