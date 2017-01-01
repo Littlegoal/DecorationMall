@@ -25,6 +25,11 @@
               </mvc:message-converters>
        </mvc:annotation-driven>
 
+       <mvc:resources mapping="/api/**" location="/WEB-INF/api/"/>
+
+       <bean class="com.jzh.config.SwaggerConfig" />
+       <bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />
+
        <!--ViewResolver 视图解析器-->
        <!--用于支持Servlet、JSP视图解析-->
        <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -32,6 +37,7 @@
               <property name="prefix" value="/WEB-INF/pages/"/>
               <property name="suffix" value=".jsp"/>
        </bean>
+
 
        <!-- 完成请求和注解POJO的映射 -->
        <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">

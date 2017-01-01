@@ -1,4 +1,4 @@
-package com.jzh.constant;
+package com.jzh.config;
 
 /**
  * @author Yunpeng Ma

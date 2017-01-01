@@ -30,31 +30,31 @@ public class Commodity implements Serializable {
      */
     private Long shopId;
     /**
-     * 主图片，即可缩放图片，以{@see com.jzh.constant.Constants.Commondity}定义分割规则
+     * 主图片，即可缩放图片，以{@see com.jzh.config.Constants.Commondity}定义分割规则
      */
     private String imgPrincipal;
     /**
-     * 效果图，以{@see com.jzh.constant.Constants.Commondity}定义分割规则
+     * 效果图，以{@see com.jzh.config.Constants.Commondity}定义分割规则
      */
     private String imgDrawing;
     /**
-     *实拍图，以{@see com.jzh.constant.Constants.Commondity}定义分割规则
+     *实拍图，以{@see com.jzh.config.Constants.Commondity}定义分割规则
      */
     private String imgShot;
     /**
-     * 尺寸图，以{@see com.jzh.constant.Constants.Commondity}定义分割规则
+     * 尺寸图，以{@see com.jzh.config.Constants.Commondity}定义分割规则
      */
     private String imgSize;
     /**
-     * 细节图，以{@see com.jzh.constant.Constants.Commondity}定义分割规则
+     * 细节图，以{@see com.jzh.config.Constants.Commondity}定义分割规则
      */
     private String imgDetail;
     /**
-     * 材质图，以{@see com.jzh.constant.Constants.Commondity}定义分割规则
+     * 材质图，以{@see com.jzh.config.Constants.Commondity}定义分割规则
      */
     private String imgMaterial;
     /**
-     * 优势图，以{@see com.jzh.constant.Constants.Commondity}定义分割规则
+     * 优势图，以{@see com.jzh.config.Constants.Commondity}定义分割规则
      */
     private String imgAdvantage;
     /**
