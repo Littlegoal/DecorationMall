@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller("SessionController")
 @RequestMapping("/session")
-@Api(value = "用户登录相关")
+@Api(value = "Session", description = "登录相关")
 public class SessionController {
 
     @Autowired
@@ -43,21 +43,36 @@ public class SessionController {
     )
     public String login4Customer(
             @RequestParam("phone")
-            @ApiParam(required = true,
+            @ApiParam(
+                    required = true,
                     name = "phone",
                     value = "手机号")
                     String phone,
             @RequestParam("password")
-            @ApiParam(required = true,
+            @ApiParam(
+                    required = true,
                     name = "password",
                     value = "密码")
                     char[] password,
+            @RequestParam("captcha")
+            @ApiParam(
+                    name = "captcha",
+                    value = "验证码"
+            )
+                    String captcha,
             @RequestParam("rememberMe")
-            @ApiParam(required = true,
+            @ApiParam(
+                    required = true,
                     name = "rememberMe",
                     value = "记住我？",
                     defaultValue = "true")
-                    boolean rememberMe) {
+                    boolean rememberMe,
+            @RequestParam("ref")
+            @ApiParam(
+                    name = "ref",
+                    value = "重定向"
+            )
+                    String refUrl) {
         Result result = customerService.login(phone, password, rememberMe);
 
         return JsonUtils.toJsonString(result);
