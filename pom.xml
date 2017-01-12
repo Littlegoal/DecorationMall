@@ -327,6 +327,18 @@
         </dependency>
         <!-- Jackson End -->
 
+        <!-- Redis Start -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>1.7.6.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <!-- Redis End -->
     </dependencies>
     <build>
         <finalName>jzh</finalName>

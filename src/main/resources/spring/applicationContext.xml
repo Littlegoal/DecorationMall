@@ -27,11 +27,13 @@
                 <value>classpath:properties/jdbc.properties</value>
                 <value>classpath:properties/log4j.properties</value>
                 <value>classpath:properties/jzh.properties</value>
+                <value>classpath:properties/redis.properties</value>
             </list>
         </property>
     </bean>
 
     <import resource="applicationContext-mybatis.xml"/>
     <import resource="applicationContext-spring.xml"/>
-    <import resource="classpath:shiro/spring-shiro.xml"/>
+    <import resource="applicationContext-shiro.xml"/>
+    <import resource="applicationContext-redis.xml" />
 </beans>
