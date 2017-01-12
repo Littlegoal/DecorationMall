@@ -339,6 +339,15 @@
             <version>2.9.0</version>
         </dependency>
         <!-- Redis End -->
+
+        <!-- Annotations Start-->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>13.0</version>
+        </dependency>
+        <!-- Annotations Start -->
+
     </dependencies>
     <build>
         <finalName>jzh</finalName>
